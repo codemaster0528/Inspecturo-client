@@ -11,7 +11,7 @@ import axios from 'axios'
 import authConfig from 'src/configs/auth'
 
 // ** Global
-import { SERVER_URL } from '../global'
+import { SERVER_URL } from '../globalValues'
 
 // ** Defaults
 const defaultProvider = {
