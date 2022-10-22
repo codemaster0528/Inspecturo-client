@@ -28,7 +28,7 @@ const renderClient = params => {
   const stateNum = Math.floor(Math.random() * 6)
   const states = ['success', 'error', 'warning', 'info', 'primary', 'secondary']
   const color = states[stateNum]
-  if (row.avatar.length) {
+  if (row.carImage.length) {
     return <CustomAvatar src={`/images/avatars/${row.avatar}`} sx={{ mr: 3, width: '1.875rem', height: '1.875rem' }} />
   } else {
     return (
@@ -69,7 +69,7 @@ const TableColumns = () => {
     {
       flex: 0.25,
       minWidth: 290,
-      field: 'full_name',
+      field: 'carKey',
       headerName: 'Car',
       hide: hideNameColumn,
       renderCell: params => {
@@ -80,10 +80,10 @@ const TableColumns = () => {
             {renderClient(params)}
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
               <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
-                {row.full_name}
+                {row.carModel}
               </Typography>
               <Typography noWrap variant='caption'>
-                {row.email}
+                {row.carMake}
               </Typography>
             </Box>
           </Box>
@@ -94,42 +94,42 @@ const TableColumns = () => {
       flex: 0.175,
       minWidth: 120,
       headerName: 'Price',
-      field: 'start_date',
+      field: 'carPrice',
       renderCell: params => (
         <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.start_date}
+          {params.row.carPrice}
         </Typography>
       )
     },
     {
       flex: 0.15,
       minWidth: 110,
-      field: 'salary',
+      field: 'trips',
       headerName: 'Trips',
       renderCell: params => (
         <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.salary}
+          {params.row.carMake}
         </Typography>
       )
     },
     {
       flex: 0.1,
-      field: 'age',
+      field: 'rating',
       minWidth: 80,
       headerName: 'Rating',
       renderCell: params => (
         <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.age}
+          {params.row.carYear}
         </Typography>
       )
     },
     {
       flex: 0.2,
       minWidth: 140,
-      field: 'status',
+      field: 'inspecturo score',
       headerName: 'Inspecturo Score',
       renderCell: params => {
-        const status = statusObj[params.row.status]
+        const status = statusObj[params.row.regionId]
 
         return (
           <CustomChip
@@ -145,7 +145,7 @@ const TableColumns = () => {
     {
       flex: 0.125,
       minWidth: 140,
-      field: 'actions',
+      field: 'owner',
       headerName: 'Owner',
       renderCell: params => {
         return (
