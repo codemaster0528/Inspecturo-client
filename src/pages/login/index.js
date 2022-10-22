@@ -202,7 +202,7 @@ const LoginPage = () => {
               </Link>
             </Box>
             <Box sx={{ mb: 6 }}>
-              <TypographyStyled variant='h5'>{`Welcome to ${themeConfig.templateName}! 👋🏻`}</TypographyStyled>
+              <TypographyStyled variant='h5'>{`sdf to ${themeConfig.templateName}! 👋🏻`}</TypographyStyled>
               <Typography variant='body2'>
                 {' '}
                 Please sign-in to your account and open up a world of opportunities and data
