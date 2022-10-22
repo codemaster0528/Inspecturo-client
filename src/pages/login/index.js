@@ -150,7 +150,6 @@ const LoginPage = () => {
   const onSubmit = data => {
     setLoginBtnDisable(true)
     const { email, password } = data
-
     auth.login({ email, password }, () => {
       setError('email', {
         type: 'manual',
