@@ -197,7 +197,7 @@ const LoginPage = () => {
                 justifyContent: 'center'
               }}
             >
-              <Link passHref href='http://inspecturo.com'>
+              <Link href='http://inspecturo.com'>
                 <Logo alt='login-title' src={`/images/pages/${logoSource}-${theme.palette.mode}.png`} />
               </Link>
             </Box>
