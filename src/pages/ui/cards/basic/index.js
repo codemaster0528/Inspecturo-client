@@ -23,7 +23,9 @@ import CardHorizontalRatings from 'src/views/ui/cards/basic/CardHorizontalRating
 const CardBasic = () => {
   return (
     <Grid container spacing={6}>
-      <TableColumns1 />
+      <Grid item xs={12} sm={12}>
+        <TableColumns1 />
+      </Grid>
     </Grid>
   )
 }

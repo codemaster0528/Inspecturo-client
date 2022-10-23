@@ -38,6 +38,7 @@
     "@mui/lab": "5.0.0-alpha.80",
     "@mui/material": "5.6.4",
     "@mui/x-data-grid": "5.10.0",
+    "@mui/x-data-grid-pro": "^5.17.8",
     "@popperjs/core": "2.11.2",
     "@reduxjs/toolkit": "1.8.1",
     "apexcharts-clevision": "3.28.5",

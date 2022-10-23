@@ -1,5 +1,5 @@
 // ** React Imports
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 // ** MUI Imports
 import Box from '@mui/material/Box'
@@ -7,7 +7,9 @@ import Card from '@mui/material/Card'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import CardHeader from '@mui/material/CardHeader'
-import { DataGrid } from '@mui/x-data-grid'
+import { DataGrid, DataGridProps } from '@mui/x-data-grid'
+
+// import { DataGridPro } from '@mui/x-data-grid-pro'
 
 // ** Third Party Components
 import toast from 'react-hot-toast'
@@ -47,29 +49,6 @@ const statusObj = {
   5: { title: 'applied', color: 'info' }
 }
 
-const createData = (name, calories, fat, carbs, protein, price) => {
-  return {
-    name,
-    calories,
-    fat,
-    carbs,
-    protein,
-    price,
-    history: [
-      {
-        date: '2020-01-05',
-        customerId: '11091700',
-        amount: 3
-      },
-      {
-        date: '2020-01-02',
-        customerId: 'Anonymous',
-        amount: 1
-      }
-    ]
-  }
-}
-
 // ** Full Name Getter
 const getFullName = params =>
   toast(
@@ -83,24 +62,25 @@ const getFullName = params =>
     </Box>
   )
 
-const collapseRows = [
-  { path: 'Sarah', jobTitle: 'CEO', id: 0 },
-  { path: 'Sarah/Thomas', jobTitle: 'Head of Sales', id: 1 },
-  { path: 'Sarah/Thomas/Robert', jobTitle: 'Sales Person', id: 2 },
-  { path: 'Sarah/Thomas/Karen', jobTitle: 'Sales Person', id: 3 }
-]
+function DetailPanelContent() {
+  return asdfsdfsdfsdafdssfd
+}
 
 const TableColumns = () => {
   // ** States
-  const [pageSize, setPageSize] = useState(50)
+  const [pageSize, setPageSize] = useState(7)
   const [hideNameColumn, setHideNameColumn] = useState(false)
+
+  const getDetailPanelContent = React.useCallback(({ row }) => <DetailPanelContent row={row} />, [])
+
+  const getDetailPanelHeight = React.useCallback(() => 400, [])
 
   const columns = [
     {
       flex: 0.25,
       minWidth: 290,
-      field: 'carKey',
-      headerName: 'Car',
+      field: 'full_name',
+      headerName: 'Name',
       hide: hideNameColumn,
       renderCell: params => {
         const { row } = params
@@ -110,10 +90,10 @@ const TableColumns = () => {
             {renderClient(params)}
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
               <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
-                {row.carModel}
+                {row.full_name}
               </Typography>
               <Typography noWrap variant='caption'>
-                {row.carMake}
+                {row.email}
               </Typography>
             </Box>
           </Box>
@@ -123,43 +103,43 @@ const TableColumns = () => {
     {
       flex: 0.175,
       minWidth: 120,
-      headerName: 'Price',
-      field: 'carPrice',
+      headerName: 'Date',
+      field: 'start_date',
       renderCell: params => (
         <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.carPrice}
+          {params.row.start_date}
         </Typography>
       )
     },
     {
       flex: 0.15,
       minWidth: 110,
-      field: 'trips',
-      headerName: 'Trips',
+      field: 'salary',
+      headerName: 'Salary',
       renderCell: params => (
         <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.carMake}
+          {params.row.salary}
         </Typography>
       )
     },
     {
       flex: 0.1,
-      field: 'rating',
+      field: 'age',
       minWidth: 80,
-      headerName: 'Rating',
+      headerName: 'Age',
       renderCell: params => (
         <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.carYear}
+          {params.row.age}
         </Typography>
       )
     },
     {
       flex: 0.2,
       minWidth: 140,
-      field: 'inspecturo score',
-      headerName: 'Inspecturo Score',
+      field: 'status',
+      headerName: 'Status',
       renderCell: params => {
-        const status = statusObj[params.row.regionId]
+        const status = statusObj[params.row.status]
 
         return (
           <CustomChip
@@ -175,8 +155,8 @@ const TableColumns = () => {
     {
       flex: 0.125,
       minWidth: 140,
-      field: 'owner',
-      headerName: 'Owner',
+      field: 'actions',
+      headerName: 'Actions',
       renderCell: params => {
         return (
           <Button size='small' variant='outlined' color='secondary' onClick={() => getFullName(params)}>
@@ -190,23 +170,25 @@ const TableColumns = () => {
   return (
     <Card>
       <CardHeader
-        title='Cars List'
-
-        // action={
-        //    <Box>
-        //      <Button size='small' variant='contained' onClick={() => setHideNameColumn(!hideNameColumn)}>
-        //        Toggle Name Column
-        //      </Button>
-        //    </Box>
-        // }
+        title='Column'
+        action={
+          <Box>
+            <Button size='small' variant='contained' onClick={() => setHideNameColumn(!hideNameColumn)}>
+              Toggle Name Column
+            </Button>
+          </Box>
+        }
       />
       <DataGrid
         autoHeight
         rows={rows}
         columns={columns}
+        rowThreshold={0}
+        getDetailPanelContent={getDetailPanelContent}
+        getDetailPanelHeight={getDetailPanelHeight} // Optional, default is 500px.
         pageSize={pageSize}
         disableSelectionOnClick
-        rowsPerPageOptions={[50]}
+        rowsPerPageOptions={[7, 10, 25, 50]}
         onPageSizeChange={newPageSize => setPageSize(newPageSize)}
       />
     </Card>
