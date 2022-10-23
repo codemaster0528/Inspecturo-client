@@ -20,6 +20,9 @@ import CartPlus from 'mdi-material-ui/CartPlus'
 import Facebook from 'mdi-material-ui/Facebook'
 import Linkedin from 'mdi-material-ui/Linkedin'
 import GooglePlus from 'mdi-material-ui/GooglePlus'
+import Select from '@mui/material/Select'
+import InputLabel from '@mui/material/InputLabel'
+import FormControl from '@mui/material/FormControl'
 import ShareVariant from 'mdi-material-ui/ShareVariant'
 
 // Styled Grid component
@@ -51,14 +54,14 @@ const CardMobile = () => {
   return (
     <Card>
       <Grid container spacing={6}>
-        <StyledGrid item md={5} xs={12}>
+        <StyledGrid item md={2} xs={12}>
           <CardContent sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <img width={137} height={176} alt='Apple iPhone 11 Pro' src='/images/cards/iPhone-11-pro.png' />
+            <img width={90} height={90} src={`/images/pages/ask-inspecturo.svg`} alt='mySvgImage' />
           </CardContent>
         </StyledGrid>
         <Grid
           item
-          md={7}
+          md={10}
           xs={12}
           sx={{
             pt: theme => ['0 !important', '0 !important', `${theme.spacing(6)} !important`],
@@ -67,58 +70,30 @@ const CardMobile = () => {
         >
           <CardContent>
             <Typography variant='h6' sx={{ mb: 2 }}>
-              Apple iPhone 11 Pro
+              Ask Inspecturo
             </Typography>
-            <Typography variant='body2' sx={{ mb: 2 }}>
-              Apple iPhone 11 Pro smartphone. Announced Sep 2019. Features 5.8″ display Apple A13 Bionic
-            </Typography>
-            <Typography sx={{ mb: 2 }}>
-              Price:{' '}
-              <Box component='span' sx={{ fontWeight: 600 }}>
-                $899
-              </Box>
+            <Typography variant='body2' sx={{ mb: 0 }}>
+              <FormControl sx={{ width: '100%', borderTopLeftRadius: 0, borderTopRightRadius: 0 }}>
+                <Select
+                  sx={{ width: '100%', height: '40px' }}
+                  defaultValue=''
+                  id='demo-simple-select-autoWidth'
+                  labelId='demo-simple-select-autoWidth-label'
+                >
+                  <MenuItem value={10}>What are the most popular cars in my State?</MenuItem>
+                  <MenuItem value={20}>What are the highest earning cars in my State?</MenuItem>
+                  <MenuItem value={30}>Which Owners have the most trips in my State?</MenuItem>
+                  <MenuItem value={40}>What Owners make the most money in my State? </MenuItem>
+                  <MenuItem value={50}>Where are all the Turo cars in my State?</MenuItem>
+                  <MenuItem value={60}>What are the most popular States for Turo?</MenuItem>
+                  <MenuItem value={70}>What locations would be ideal for a new Turo car in my State?</MenuItem>
+                  <MenuItem value={80}>What car should I buy for Turo in my State?</MenuItem>
+                  <MenuItem value={90}>What is the most popular car fuel type in my State?</MenuItem>
+                  <MenuItem value={100}>What are the search positions of cars in my State?</MenuItem>
+                </Select>
+              </FormControl>
             </Typography>
           </CardContent>
-          <CardActions className='card-action-dense'>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-              <Button>
-                <CartPlus fontSize='small' sx={{ mr: 2 }} />
-                Add to Card
-              </Button>
-              <IconButton
-                id='long-button'
-                aria-label='share'
-                aria-haspopup='true'
-                onClick={handleClick}
-                aria-controls='long-menu'
-                aria-expanded={open ? 'true' : undefined}
-              >
-                <ShareVariant fontSize='small' />
-              </IconButton>
-              <Menu
-                open={open}
-                id='long-menu'
-                anchorEl={anchorEl}
-                onClose={handleClose}
-                MenuListProps={{
-                  'aria-labelledby': 'long-button'
-                }}
-              >
-                <MenuItem onClick={handleClose}>
-                  <Facebook />
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                  <Twitter />
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                  <Linkedin />
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                  <GooglePlus />
-                </MenuItem>
-              </Menu>
-            </Box>
-          </CardActions>
         </Grid>
       </Grid>
     </Card>

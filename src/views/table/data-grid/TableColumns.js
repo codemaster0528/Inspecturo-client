@@ -47,6 +47,29 @@ const statusObj = {
   5: { title: 'applied', color: 'info' }
 }
 
+const createData = (name, calories, fat, carbs, protein, price) => {
+  return {
+    name,
+    calories,
+    fat,
+    carbs,
+    protein,
+    price,
+    history: [
+      {
+        date: '2020-01-05',
+        customerId: '11091700',
+        amount: 3
+      },
+      {
+        date: '2020-01-02',
+        customerId: 'Anonymous',
+        amount: 1
+      }
+    ]
+  }
+}
+
 // ** Full Name Getter
 const getFullName = params =>
   toast(
@@ -59,6 +82,13 @@ const getFullName = params =>
       </Box>
     </Box>
   )
+
+const collapseRows = [
+  { path: 'Sarah', jobTitle: 'CEO', id: 0 },
+  { path: 'Sarah/Thomas', jobTitle: 'Head of Sales', id: 1 },
+  { path: 'Sarah/Thomas/Robert', jobTitle: 'Sales Person', id: 2 },
+  { path: 'Sarah/Thomas/Karen', jobTitle: 'Sales Person', id: 3 }
+]
 
 const TableColumns = () => {
   // ** States
@@ -161,6 +191,7 @@ const TableColumns = () => {
     <Card>
       <CardHeader
         title='Cars List'
+
         // action={
         //    <Box>
         //      <Button size='small' variant='contained' onClick={() => setHideNameColumn(!hideNameColumn)}>

@@ -1,6 +1,7 @@
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
+import Grid from '@mui/material/Grid'
 
 // ** Icons Imports
 import MenuIcon from 'mdi-material-ui/Menu'
@@ -10,6 +11,7 @@ import Autocomplete from 'src/layouts/components/Autocomplete'
 import ModeToggler from 'src/@core/layouts/components/shared-components/ModeToggler'
 import UserDropdown from 'src/@core/layouts/components/shared-components/UserDropdown'
 import LanguageDropdown from 'src/@core/layouts/components/shared-components/LanguageDropdown'
+import CardMobile from 'src/views/ui/cards/basic/CardMobile'
 import NotificationDropdown from 'src/@core/layouts/components/shared-components/NotificationDropdown'
 
 const AppBarContent = props => {
@@ -18,13 +20,10 @@ const AppBarContent = props => {
 
   return (
     <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-      <Box className='actions-left' sx={{ mr: 2, display: 'flex', alignItems: 'center' }}>
-        {hidden ? (
-          <IconButton color='inherit' sx={{ ml: -2.75 }} onClick={toggleNavVisibility}>
-            <MenuIcon />
-          </IconButton>
-        ) : null}
-        <Autocomplete hidden={hidden} settings={settings} />
+      <Box className='actions-left' sx={{ width: '100%', mr: 2, mt: 6, display: 'flex', alignItems: 'center' }}>
+        <div style={{ width: '100%' }}>
+          <CardMobile />
+        </div>
       </Box>
       <Box className='actions-right' sx={{ display: 'flex', alignItems: 'center' }}>
         <LanguageDropdown settings={settings} saveSettings={saveSettings} />

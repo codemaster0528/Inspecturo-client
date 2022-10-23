@@ -44,12 +44,13 @@ const SelectProps = () => {
           <MenuItem value=''>
             <em>None</em>
           </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          <MenuItem value={10}>Tesadfasdfsn</MenuItem>
+          <MenuItem value={20}>Twasdfasdfsdafsdfasdenty</MenuItem>
+          <MenuItem value={30}>Thirsadfsdafasdfsdfasfdty</MenuItem>
         </Select>
         <FormHelperText>Auto width</FormHelperText>
       </FormControl>
+
       <FormControl disabled>
         <InputLabel id='demo-simple-select-disabled-label'>Age</InputLabel>
         <Select
