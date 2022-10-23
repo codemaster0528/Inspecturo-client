@@ -17,12 +17,13 @@ import CardNavigation from 'src/views/ui/cards/basic/CardNavigation'
 import CardWithCollapse from 'src/views/ui/cards/basic/CardWithCollapse'
 import CardVerticalRatings from 'src/views/ui/cards/basic/CardVerticalRatings'
 import CardNavigationCenter from 'src/views/ui/cards/basic/CardNavigationCenter'
+import TableColumns1 from 'src/views/table/data-grid/TableColumns1'
 import CardHorizontalRatings from 'src/views/ui/cards/basic/CardHorizontalRatings'
 
 const CardBasic = () => {
   return (
     <Grid container spacing={6}>
-      <Grid item xs={12} sm={9}></Grid>
+      <TableColumns1 />
     </Grid>
   )
 }

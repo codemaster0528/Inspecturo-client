@@ -16,6 +16,10 @@ import CardWidgetsOrganicSessions from 'src/views/ui/cards/widgets/CardWidgetsOr
 import CardWidgetsProjectTimeline from 'src/views/ui/cards/widgets/CardWidgetsProjectTimeline'
 import CardWidgetsActivityTimeline from 'src/views/ui/cards/widgets/CardWidgetsActivityTimeline'
 import CardWidgetsTotalTransactions from 'src/views/ui/cards/widgets/CardWidgetsTotalTransactions'
+import CardImgTop from 'src/views/ui/cards/basic/CardImgTop'
+import CardUser from 'src/views/ui/cards/basic/CardUser'
+import TableColumns from 'src/views/table/data-grid/TableColumns'
+
 import CardFinanceApp from 'src/views/ui/cards/advanced/CardFinanceApp'
 import CardWidgetsPerformanceOverview from 'src/views/ui/cards/widgets/CardWidgetsPerformanceOverview'
 
@@ -23,14 +27,23 @@ const CardWidgets = () => {
   return (
     <ApexChartWrapper>
       <Grid container spacing={6}>
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid item xs={12} sm={12} md={4}>
           <CardFinanceApp />
         </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <CardWidgetsExternalLinks />
+        <Grid item xs={12} sm={12} md={4}>
+          <CardFinanceApp />
         </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <CardWidgetsSalesCountry />
+        <Grid item xs={12} sm={12} md={4}>
+          <CardFinanceApp />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <CardImgTop />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TableColumns />
+        </Grid>
+        <Grid item xs={12} sm={12}>
+          <CardUser />
         </Grid>
       </Grid>
     </ApexChartWrapper>

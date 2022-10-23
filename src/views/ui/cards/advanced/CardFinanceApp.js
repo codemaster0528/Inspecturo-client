@@ -15,6 +15,10 @@ import LinearProgress from '@mui/material/LinearProgress'
 import Paperclip from 'mdi-material-ui/Paperclip'
 import DotsVertical from 'mdi-material-ui/DotsVertical'
 import CheckCircleOutline from 'mdi-material-ui/CheckCircleOutline'
+import PiggyBank from 'mdi-material-ui/PiggyBank'
+import Star from 'mdi-material-ui/Star'
+import Calendar from 'mdi-material-ui/Calendar'
+import Account from 'mdi-material-ui/Account'
 
 import TrendingUp from 'mdi-material-ui/TrendingUp'
 import StarOutline from 'mdi-material-ui/StarOutline'
@@ -38,7 +42,7 @@ const CardFinanceApp = () => {
         sx={{ height: 150, width: 150, borderRadius: 40, margin: 'auto', mt: 5 }}
         image='/images/cards/iPhone-bg.png'
       />
-      <CardContent sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+      <CardContent sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', textAlign: 'center' }}>
         <Typography variant='h6' sx={{ mb: 1 }}>
           CarMake CarModel CarYear
         </Typography>
@@ -52,22 +56,22 @@ const CardFinanceApp = () => {
           Total Trips
         </Typography>
         <Grid container spacing={4}>
-          <Grid item xs={12} sm={5}>
+          <Grid item xs={12} sm={12}>
             <StyledBox>
               <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
-                <LockOpenOutline sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
-                <Typography variant='body2'>Car Reveune</Typography>
+                <PiggyBank sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
+                <Typography variant='body2'>Currency Symbol Car Reveune</Typography>
               </Box>
               <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
-                <LockOpenOutline sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
+                <Star sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
                 <Typography variant='body2'>Car Rating</Typography>
               </Box>
               <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
-                <LockOpenOutline sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
+                <Account sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
                 <Typography variant='body2'>Driver Name</Typography>
               </Box>
               <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
-                <LockOpenOutline sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
+                <Star sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
                 <Typography variant='body2'>Driver Rating</Typography>
               </Box>
             </StyledBox>

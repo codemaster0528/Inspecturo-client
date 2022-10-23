@@ -47,6 +47,29 @@ const statusObj = {
   5: { title: 'applied', color: 'info' }
 }
 
+const createData = (name, calories, fat, carbs, protein, price) => {
+  return {
+    name,
+    calories,
+    fat,
+    carbs,
+    protein,
+    price,
+    history: [
+      {
+        date: '2020-01-05',
+        customerId: '11091700',
+        amount: 3
+      },
+      {
+        date: '2020-01-02',
+        customerId: 'Anonymous',
+        amount: 1
+      }
+    ]
+  }
+}
+
 // ** Full Name Getter
 const getFullName = params =>
   toast(
@@ -60,17 +83,24 @@ const getFullName = params =>
     </Box>
   )
 
+const collapseRows = [
+  { path: 'Sarah', jobTitle: 'CEO', id: 0 },
+  { path: 'Sarah/Thomas', jobTitle: 'Head of Sales', id: 1 },
+  { path: 'Sarah/Thomas/Robert', jobTitle: 'Sales Person', id: 2 },
+  { path: 'Sarah/Thomas/Karen', jobTitle: 'Sales Person', id: 3 }
+]
+
 const TableColumns = () => {
   // ** States
-  const [pageSize, setPageSize] = useState(3)
+  const [pageSize, setPageSize] = useState(50)
   const [hideNameColumn, setHideNameColumn] = useState(false)
 
   const columns = [
     {
       flex: 0.25,
       minWidth: 290,
-      field: 'full_name',
-      headerName: 'State',
+      field: 'carKey',
+      headerName: 'Car',
       hide: hideNameColumn,
       renderCell: params => {
         const { row } = params
@@ -80,10 +110,10 @@ const TableColumns = () => {
             {renderClient(params)}
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
               <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
-                {row.full_name}
+                {row.carModel}
               </Typography>
               <Typography noWrap variant='caption'>
-                {row.email}
+                {row.carMake}
               </Typography>
             </Box>
           </Box>
@@ -93,48 +123,90 @@ const TableColumns = () => {
     {
       flex: 0.175,
       minWidth: 120,
-      headerName: 'Previous Tips',
-      field: 'Date',
+      headerName: 'Price',
+      field: 'carPrice',
       renderCell: params => (
         <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.start_date}
+          {params.row.carPrice}
         </Typography>
       )
     },
     {
       flex: 0.15,
       minWidth: 110,
-      field: 'salary',
-      headerName: 'New Tips',
+      field: 'trips',
+      headerName: 'Trips',
       renderCell: params => (
         <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.salary}
+          {params.row.carMake}
         </Typography>
       )
     },
     {
       flex: 0.1,
-      field: 'age',
+      field: 'rating',
       minWidth: 80,
-      headerName: 'Growth',
+      headerName: 'Rating',
       renderCell: params => (
         <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.age}
+          {params.row.carYear}
         </Typography>
       )
+    },
+    {
+      flex: 0.2,
+      minWidth: 140,
+      field: 'inspecturo score',
+      headerName: 'Inspecturo Score',
+      renderCell: params => {
+        const status = statusObj[params.row.regionId]
+
+        return (
+          <CustomChip
+            size='small'
+            skin='light'
+            color={status.color}
+            label={status.title}
+            sx={{ '& .MuiChip-label': { textTransform: 'capitalize' } }}
+          />
+        )
+      }
+    },
+    {
+      flex: 0.125,
+      minWidth: 140,
+      field: 'owner',
+      headerName: 'Owner',
+      renderCell: params => {
+        return (
+          <Button size='small' variant='outlined' color='secondary' onClick={() => getFullName(params)}>
+            Get Name
+          </Button>
+        )
+      }
     }
   ]
 
   return (
     <Card>
-      <CardHeader title='State-by-State Growth' />
+      <CardHeader
+        title='Cars List'
+
+        // action={
+        //    <Box>
+        //      <Button size='small' variant='contained' onClick={() => setHideNameColumn(!hideNameColumn)}>
+        //        Toggle Name Column
+        //      </Button>
+        //    </Box>
+        // }
+      />
       <DataGrid
         autoHeight
         rows={rows}
         columns={columns}
         pageSize={pageSize}
         disableSelectionOnClick
-        rowsPerPageOptions={[3, 7, 10, 25, 50]}
+        rowsPerPageOptions={[50]}
         onPageSizeChange={newPageSize => setPageSize(newPageSize)}
       />
     </Card>
