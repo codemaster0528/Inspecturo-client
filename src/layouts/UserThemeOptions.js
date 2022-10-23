@@ -18,6 +18,7 @@ const UserThemeOptions = () => {
         dark: '#5A5FE0',
         contrastText: '#FFF'
       }
+      
     },
     breakpoints: {
       values: {

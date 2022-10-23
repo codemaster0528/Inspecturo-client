@@ -207,14 +207,6 @@ const LoginPage = () => {
                 Please sign-in to your account and open up a world of opportunities and data
               </Typography>
             </Box>
-            <Alert icon={false} sx={{ py: 3, mb: 6, ...bgClasses.primaryLight, '& .MuiAlert-message': { p: 0 } }}>
-              <Typography variant='caption' sx={{ mb: 2, display: 'block', color: 'primary.main' }}>
-                Admin: <strong>admin@materialize.com</strong> / Pass: <strong>admin</strong>
-              </Typography>
-              <Typography variant='caption' sx={{ display: 'block', color: 'primary.main' }}>
-                Client: <strong>client@materialize.com</strong> / Pass: <strong>client</strong>
-              </Typography>
-            </Alert>
             <form noValidate autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
               <FormControl fullWidth sx={{ mb: 4 }}>
                 <Controller
@@ -298,31 +290,6 @@ const LoginPage = () => {
                     </Typography>
                   </Link>
                 </Typography>
-              </Box>
-              <Divider sx={{ mt: 5, mb: 7.5, '& .MuiDivider-wrapper': { px: 4 } }}>or</Divider>
-              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Link href='/' passHref>
-                  <IconButton component='a' onClick={e => e.preventDefault()}>
-                    <Facebook sx={{ color: '#497ce2' }} />
-                  </IconButton>
-                </Link>
-                <Link href='/' passHref>
-                  <IconButton component='a' onClick={e => e.preventDefault()}>
-                    <Twitter sx={{ color: '#1da1f2' }} />
-                  </IconButton>
-                </Link>
-                <Link href='/' passHref>
-                  <IconButton component='a' onClick={e => e.preventDefault()}>
-                    <Github
-                      sx={{ color: theme => (theme.palette.mode === 'light' ? '#272727' : theme.palette.grey[300]) }}
-                    />
-                  </IconButton>
-                </Link>
-                <Link href='/' passHref>
-                  <IconButton component='a' onClick={e => e.preventDefault()}>
-                    <Google sx={{ color: '#db4437' }} />
-                  </IconButton>
-                </Link>
               </Box>
             </form>
           </BoxWrapper>

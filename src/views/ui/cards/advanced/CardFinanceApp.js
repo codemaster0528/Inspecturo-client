@@ -1,8 +1,10 @@
 // ** MUI Import
 import Box from '@mui/material/Box'
+import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
 import Avatar from '@mui/material/Avatar'
 import CardMedia from '@mui/material/CardMedia'
+import { styled } from '@mui/material/styles'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import AvatarGroup from '@mui/material/AvatarGroup'
@@ -14,73 +16,63 @@ import Paperclip from 'mdi-material-ui/Paperclip'
 import DotsVertical from 'mdi-material-ui/DotsVertical'
 import CheckCircleOutline from 'mdi-material-ui/CheckCircleOutline'
 
+import TrendingUp from 'mdi-material-ui/TrendingUp'
+import StarOutline from 'mdi-material-ui/StarOutline'
+import AccountOutline from 'mdi-material-ui/AccountOutline'
+import LockOpenOutline from 'mdi-material-ui/LockOpenOutline'
+
 // ** Custom Components Imports
 import CustomChip from 'src/@core/components/mui/chip'
+
+// Styled Box component
+const StyledBox = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.up('sm')]: {
+    borderRight: `0px solid ${theme.palette.divider}`
+  }
+}))
 
 const CardFinanceApp = () => {
   return (
     <Card>
-      <CardMedia sx={{ height: 200 }} image='/images/cards/iPhone-bg.png' />
-      <CardContent>
-        <Box sx={{ mb: 3.5, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <CustomChip
-              skin='light'
-              size='small'
-              color='success'
-              label='UI Design'
-              sx={{ mr: 2.5, height: 20, fontSize: '0.75rem', fontWeight: 500 }}
-            />
-            <CustomChip
-              skin='light'
-              size='small'
-              color='error'
-              label='React'
-              sx={{ height: 20, fontSize: '0.75rem', fontWeight: 500 }}
-            />
-          </Box>
-          <IconButton size='small' aria-label='settings' className='card-more-options'>
-            <DotsVertical />
-          </IconButton>
-        </Box>
-
+      <CardMedia
+        sx={{ height: 150, width: 150, borderRadius: 40, margin: 'auto', mt: 5 }}
+        image='/images/cards/iPhone-bg.png'
+      />
+      <CardContent sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
         <Typography variant='h6' sx={{ mb: 1 }}>
-          Finance iOS App
+          CarMake CarModel CarYear
         </Typography>
         <Typography variant='body2' sx={{ mb: 4, fontWeight: 600 }}>
-          Due Date: 20/Dec/2022
+          Most Popular Car
         </Typography>
-        <Typography variant='body2' sx={{ mb: 6.25 }}>
-          Managing your money isn’t the easiest thing to do. Now that many of us no longer balance a checkbook, tracking
-          and expenses.
+        <Typography variant='body2' sx={{ mb: 4, fontWeight: 600 }}>
+          Value
         </Typography>
-        <Box sx={{ mb: 1.25, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <Typography variant='body2' sx={{ mr: 2, fontWeight: 600, color: 'text.primary' }}>
-            Progress
-          </Typography>
-          <Typography variant='body2' sx={{ fontWeight: 600, color: 'text.primary' }}>
-            68%
-          </Typography>
-        </Box>
-        <LinearProgress value={68} color='success' sx={{ mb: 5.75 }} variant='determinate' />
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between' }}>
-          <AvatarGroup sx={{ mr: 2 }}>
-            <Avatar src='/images/avatars/3.png' alt='Olivia Sparks' />
-            <Avatar src='/images/avatars/5.png' alt='Howard Lloyd' />
-            <Avatar src='/images/avatars/4.png' alt='Hallie Richards' />
-            <Avatar src='/images/avatars/2.png' alt='Alice Cobb' />
-          </AvatarGroup>
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Paperclip sx={{ mr: 1, fontSize: '1.375rem', color: 'text.secondary' }} />
-            <Typography variant='body2' sx={{ mr: 2.5, fontWeight: 600 }}>
-              24
-            </Typography>
-            <CheckCircleOutline sx={{ mr: 1, fontSize: '1.375rem', color: 'text.secondary' }} />
-            <Typography variant='body2' sx={{ fontWeight: 600 }}>
-              74/180
-            </Typography>
-          </Box>
-        </Box>
+        <Typography variant='body2' sx={{ mb: 4, fontWeight: 600 }}>
+          Total Trips
+        </Typography>
+        <Grid container spacing={4}>
+          <Grid item xs={12} sm={5}>
+            <StyledBox>
+              <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
+                <LockOpenOutline sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
+                <Typography variant='body2'>Car Reveune</Typography>
+              </Box>
+              <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
+                <LockOpenOutline sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
+                <Typography variant='body2'>Car Rating</Typography>
+              </Box>
+              <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
+                <LockOpenOutline sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
+                <Typography variant='body2'>Driver Name</Typography>
+              </Box>
+              <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
+                <LockOpenOutline sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
+                <Typography variant='body2'>Driver Rating</Typography>
+              </Box>
+            </StyledBox>
+          </Grid>
+        </Grid>
       </CardContent>
     </Card>
   )
