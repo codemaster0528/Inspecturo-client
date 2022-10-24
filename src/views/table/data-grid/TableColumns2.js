@@ -15,7 +15,6 @@ import SwiperLoop from 'src/views/components/swiper/SwiperLoop'
 import CardSnippet from 'src/@core/components/card-snippet'
 import { useKeenSlider } from 'keen-slider/react'
 import KeenSliderWrapper from 'src/@core/styles/libs/keen-slider'
-import TableColumns2 from 'src/views/table/data-grid/TableColumns2'
 
 // ** Third Party Components
 import toast from 'react-hot-toast'
@@ -78,13 +77,13 @@ function DetailPanelContent() {
 
   return (
     <KeenSliderWrapper>
-      <Grid container className='match-height'>
+      <Grid container spacing={6} className='match-height'>
         <Grid item xs={12} sm={6}>
           <SwiperLoop direction='rtl' />
         </Grid>
 
         <Grid item xs={12} sm={6}>
-          <TableColumns2 />
+          12321321
         </Grid>
       </Grid>
     </KeenSliderWrapper>
@@ -102,80 +101,14 @@ const TableColumns = () => {
 
   const columns = [
     {
-      flex: 0.15,
-      minWidth: 150,
-      field: 'CarName',
-      headerName: 'Car Name',
-      hide: hideNameColumn,
-      renderCell: params => {
-        const { row } = params
-
-        return (
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            {renderClient(params)}
-            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
-                {row.carName}
-              </Typography>
-              <Typography noWrap variant='caption'>
-                {row.carMake}
-              </Typography>
-            </Box>
-          </Box>
-        )
-      }
-    },
-    {
-      flex: 0.18,
-      minWidth: 120,
-      headerName: 'Car',
-      field: 'Car',
-      renderCell: params => (
-        <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.carMake + ', ' + params.row.carModel + ', ' + params.row.carYear}
-        </Typography>
-      )
-    },
-    {
-      flex: 0.1,
-      minWidth: 110,
-      field: 'Price',
-      headerName: 'Price',
-      renderCell: params => (
-        <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.carCurrency + ' ' + params.row.carPrice}
-        </Typography>
-      )
-    },
-    {
-      flex: 0.05,
-      field: 'Trips',
-      minWidth: 80,
-      headerName: 'Trips',
-      renderCell: params => (
-        <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.trips}
-        </Typography>
-      )
-    },
-    {
-      flex: 0.1,
-      field: 'Rating',
-      minWidth: 80,
-      headerName: 'Rating',
-      renderCell: params => (
-        <Rating sx={{ color: '#fff' }} defaultValue={params.row.rating} precision={0.1} name='half-rating' readOnly />
-      )
-    },
-    {
       flex: 0.1,
       minWidth: 140,
-      field: 'InspecturoScore',
-      headerName: 'Inspecturo Score',
+      field: 'FuelType',
+      headerName: 'Fuel Type',
       renderCell: params => {
         let color = 'primany'
-        if (params.row.inspecturoScore <= 30) color = 'error'
-        else if (params.row.inspecturoScore <= 50) color = 'warning'
+        if (params.row.fuelType == 'DIESEL') color = 'primary'
+        else if (params.row.fuelType == 'GASOLINE') color = 'warning'
         else color = 'success'
 
         return (
@@ -183,75 +116,39 @@ const TableColumns = () => {
             size='small'
             skin='light'
             color={color}
-            label={params.row.inspecturoScore}
+            label={params.row.fuelType}
             sx={{ '& .MuiChip-label': { textTransform: 'capitalize' } }}
           />
         )
       }
     },
     {
-      flex: 0.05,
-      field: 'Owner',
-      minWidth: 80,
-      headerName: 'Owner',
+      flex: 0.18,
+      minWidth: 120,
+      headerName: 'Door',
+      field: 'Doors',
       renderCell: params => (
         <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.owner}
+          {params.row.doors}
         </Typography>
       )
     },
     {
       flex: 0.1,
-      field: 'OwnerTrips',
-      minWidth: 80,
-      headerName: 'Owner Trips',
+      minWidth: 110,
+      field: 'Description',
+      headerName: 'Description',
       renderCell: params => (
         <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.ownerTrips}
+          {params.row.description}
         </Typography>
-      )
-    },
-    {
-      flex: 0.1,
-      field: 'OwnerRating',
-      minWidth: 80,
-      headerName: 'Owner Rating',
-      renderCell: params => (
-        <Rating
-          sx={{ color: '#fff' }}
-          defaultValue={params.row.ownerRating}
-          precision={0.1}
-          name='half-rating'
-          readOnly
-        />
       )
     }
   ]
 
   return (
     <Card>
-      <CardHeader
-        title='Column'
-        action={
-          <Box>
-            <Button size='small' variant='contained' onClick={() => setHideNameColumn(!hideNameColumn)}>
-              Toggle Name Column
-            </Button>
-          </Box>
-        }
-      />
-      <DataGridPro
-        autoHeight
-        rows={rows}
-        columns={columns}
-        rowThreshold={0}
-        getDetailPanelContent={getDetailPanelContent}
-        getDetailPanelHeight={getDetailPanelHeight} // Optional, default is 500px.
-        pageSize={pageSize}
-        disableSelectionOnClick
-        rowsPerPageOptions={[7, 10, 25, 50]}
-        onPageSizeChange={newPageSize => setPageSize(newPageSize)}
-      />
+      <DataGrid rows={rows} columns={columns} pageSize={pageSize} />
     </Card>
   )
 }
