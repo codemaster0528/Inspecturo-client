@@ -14,7 +14,7 @@ export const rows = [
     owner: 'Jacob',
     ownerTrips: 70,
     ownerRating: 3.4,
-    fuelType: 'DIELSEL',
+    fuelType: 'DIESEL',
     doors: 4,
     description: 'Very Good'
   },
@@ -34,7 +34,7 @@ export const rows = [
     ownerTrips: 30,
     ownerRating: 4.4,
     fuelType: 'ELECTRIC',
-    doors: 2,
+    doors: 4,
     description: 'Awesome'
   }
 ]

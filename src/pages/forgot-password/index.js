@@ -27,10 +27,10 @@ import FooterIllustrationsV2 from 'src/views/pages/auth/FooterIllustrationsV2'
 
 // Styled Components
 const ForgotPasswordIllustrationWrapper = styled(Box)(({ theme }) => ({
-  padding: theme.spacing(20),
+  padding: theme.spacing(0),
   paddingRight: '0 !important',
   [theme.breakpoints.down('lg')]: {
-    padding: theme.spacing(10)
+    padding: theme.spacing(0)
   }
 }))
 

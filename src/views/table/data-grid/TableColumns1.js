@@ -230,16 +230,7 @@ const TableColumns = () => {
 
   return (
     <Card>
-      <CardHeader
-        title='Column'
-        action={
-          <Box>
-            <Button size='small' variant='contained' onClick={() => setHideNameColumn(!hideNameColumn)}>
-              Toggle Name Column
-            </Button>
-          </Box>
-        }
-      />
+      <CardHeader title='Search Ranking' />
       <DataGridPro
         autoHeight
         rows={rows}
