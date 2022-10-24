@@ -1,12 +1,13 @@
 export const rows = [
   {
     id: 1,
-    carImage: '8.png',
+    carImage: '2.png',
     carName: 'Wagen',
     carPrice: 23896.35,
     carMake: 'Volks Wagen',
     carModel: 'X-4',
     carYear: '2020',
+    carRevenue: 234,
     carCurrency: '$',
     trips: 50,
     rating: 4.5,
@@ -25,6 +26,7 @@ export const rows = [
     carPrice: 23896.35,
     carMake: 'Toyota Company',
     carModel: 'X-8',
+    carRevenue: 234,
     carYear: '2021',
     carCurrency: '$',
     trips: 20,

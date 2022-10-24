@@ -89,7 +89,7 @@ function DetailPanelContent() {
   )
 }
 
-const TableColumns = () => {
+const TableHighestEarningCars = () => {
   // ** States
   const [pageSize, setPageSize] = useState(7)
   const [hideNameColumn, setHideNameColumn] = useState(false)
@@ -133,6 +133,25 @@ const TableColumns = () => {
           {params.row.carMake + ', ' + params.row.carModel + ', ' + params.row.carYear}
         </Typography>
       )
+    },
+    {
+      flex: 0.1,
+      minWidth: 110,
+      field: 'Revenue',
+      headerName: 'Revenue',
+      renderCell: params => {
+        let color = 'success'
+
+        return (
+          <CustomChip
+            size='small'
+            skin='light'
+            color={color}
+            label={params.row.carRevenue}
+            sx={{ '& .MuiChip-label': { textTransform: 'capitalize' } }}
+          />
+        )
+      }
     },
     {
       flex: 0.1,
@@ -228,7 +247,6 @@ const TableColumns = () => {
 
   return (
     <Card>
-      <CardHeader title='Search Ranking' />
       <DataGridPro
         autoHeight
         rows={rows}
@@ -245,4 +263,4 @@ const TableColumns = () => {
   )
 }
 
-export default TableColumns
+export default TableHighestEarningCars

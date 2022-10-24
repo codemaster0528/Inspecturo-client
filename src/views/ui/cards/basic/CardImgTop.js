@@ -6,11 +6,11 @@ import CardContent from '@mui/material/CardContent'
 
 const CardImgTop = () => {
   return (
-    <Card sx={{ height: 330 }}>
+    <Card sx={{ height: 350 }}>
       <CardContent sx={{ pt: 4 }}>
         <Typography variant='h6'>Heatmap of Turo Cars in Your State</Typography>
       </CardContent>
-      <CardMedia sx={{ height: 280 }} image='/images/cards/cherry.png' />
+      <CardMedia sx={{ height: 280 }} image='/images/cars/cars.png' />
     </Card>
   )
 }

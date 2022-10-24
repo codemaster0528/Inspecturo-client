@@ -28,7 +28,7 @@ import CustomAvatar from 'src/@core/components/mui/avatar'
 import { getInitials } from 'src/@core/utils/get-initials'
 
 // ** Data Import
-import { rows } from 'src/@fake-db/table/static-data'
+import { rows } from 'src/@fake-db/table/highest-inspecturo-score-owners-data'
 
 // ** renders client column
 const renderClient = params => {
@@ -59,7 +59,6 @@ const statusObj = {
 const getFullName = params =>
   toast(
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
-      {renderClient(params)}
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
           {params.row.carName}
@@ -78,18 +77,18 @@ function DetailPanelContent() {
     <KeenSliderWrapper>
       <Grid container className='match-height'>
         <Grid item xs={12} sm={6}>
-          <SwiperLoop direction='rtl' />
+          More Detail
         </Grid>
 
         <Grid item xs={12} sm={6}>
-          <TableColumns2 />
+          No Exist
         </Grid>
       </Grid>
     </KeenSliderWrapper>
   )
 }
 
-const TableColumns = () => {
+const TableHighestInspecturoScoreOwners = () => {
   // ** States
   const [pageSize, setPageSize] = useState(7)
   const [hideNameColumn, setHideNameColumn] = useState(false)
@@ -100,61 +99,66 @@ const TableColumns = () => {
 
   const columns = [
     {
-      flex: 0.15,
-      minWidth: 150,
-      field: 'CarName',
-      headerName: 'Car Name',
-      hide: hideNameColumn,
-      renderCell: params => {
-        const { row } = params
-
-        return (
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            {renderClient(params)}
-            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
-                {row.carName}
-              </Typography>
-              <Typography noWrap variant='caption'>
-                {row.carMake}
-              </Typography>
-            </Box>
-          </Box>
-        )
-      }
-    },
-    {
       flex: 0.18,
       minWidth: 120,
-      headerName: 'Car',
-      field: 'Car',
+      headerName: 'Name',
+      field: 'Name',
       renderCell: params => (
         <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.carMake + ', ' + params.row.carModel + ', ' + params.row.carYear}
+          {params.row.driverName}
         </Typography>
       )
     },
     {
       flex: 0.1,
+      field: 'InspecturoScore',
+      minWidth: 80,
+      headerName: 'Inspecturo Score',
+      renderCell: params => {
+        let color = 'success'
+        if (params.row.driverInspecturoScore < 30) color = 'error'
+        else if (params.row.driverInspecturoScore < 50) color = 'warning'
+
+        return (
+          <CustomChip
+            size='small'
+            skin='light'
+            color={color}
+            label={params.row.driverInspecturoScore}
+            sx={{ '& .MuiChip-label': { textTransform: 'capitalize' } }}
+          />
+        )
+      }
+    },
+    {
+      flex: 0.1,
       minWidth: 110,
-      field: 'Price',
-      headerName: 'Price',
+      field: 'Trips',
+      headerName: 'Trips',
       renderCell: params => (
         <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.carCurrency + ' ' + params.row.carPrice}
+          {params.row.driverTrips}
         </Typography>
       )
     },
     {
-      flex: 0.05,
-      field: 'Trips',
-      minWidth: 80,
-      headerName: 'Trips',
-      renderCell: params => (
-        <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.trips}
-        </Typography>
-      )
+      flex: 0.1,
+      minWidth: 140,
+      field: 'Revenue',
+      headerName: 'Revenue',
+      renderCell: params => {
+        let color = 'success'
+
+        return (
+          <CustomChip
+            size='small'
+            skin='light'
+            color={color}
+            label={params.row.driverRevenue}
+            sx={{ '& .MuiChip-label': { textTransform: 'capitalize' } }}
+          />
+        )
+      }
     },
     {
       flex: 0.1,
@@ -162,62 +166,9 @@ const TableColumns = () => {
       minWidth: 80,
       headerName: 'Rating',
       renderCell: params => (
-        <Rating sx={{ color: '#fff' }} defaultValue={params.row.rating} precision={0.1} name='half-rating' readOnly />
-      )
-    },
-    {
-      flex: 0.1,
-      minWidth: 140,
-      field: 'InspecturoScore',
-      headerName: 'Inspecturo Score',
-      renderCell: params => {
-        let color = 'primany'
-        if (params.row.inspecturoScore <= 30) color = 'error'
-        else if (params.row.inspecturoScore <= 50) color = 'warning'
-        else color = 'success'
-
-        return (
-          <CustomChip
-            size='small'
-            skin='light'
-            color={color}
-            label={params.row.inspecturoScore}
-            sx={{ '& .MuiChip-label': { textTransform: 'capitalize' } }}
-          />
-        )
-      }
-    },
-    {
-      flex: 0.05,
-      field: 'Owner',
-      minWidth: 80,
-      headerName: 'Owner',
-      renderCell: params => (
-        <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.owner}
-        </Typography>
-      )
-    },
-    {
-      flex: 0.1,
-      field: 'OwnerTrips',
-      minWidth: 80,
-      headerName: 'Owner Trips',
-      renderCell: params => (
-        <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.ownerTrips}
-        </Typography>
-      )
-    },
-    {
-      flex: 0.1,
-      field: 'OwnerRating',
-      minWidth: 80,
-      headerName: 'Owner Rating',
-      renderCell: params => (
         <Rating
           sx={{ color: '#fff' }}
-          defaultValue={params.row.ownerRating}
+          defaultValue={params.row.driverRating}
           precision={0.1}
           name='half-rating'
           readOnly
@@ -228,7 +179,6 @@ const TableColumns = () => {
 
   return (
     <Card>
-      <CardHeader title='Search Ranking' />
       <DataGridPro
         autoHeight
         rows={rows}
@@ -245,4 +195,4 @@ const TableColumns = () => {
   )
 }
 
-export default TableColumns
+export default TableHighestInspecturoScoreOwners

@@ -1,65 +1,53 @@
 // ** MUI Imports
 import Grid from '@mui/material/Grid'
 
-// ** Demo Components Imports
-import CardFinanceApp from 'src/views/ui/cards/advanced/CardFinanceApp'
-import CardPlanUpgrade from 'src/views/ui/cards/advanced/CardPlanUpgrade'
-import CardTransactions from 'src/views/ui/cards/advanced/CardTransactions'
-import CardTotalEarnings from 'src/views/ui/cards/advanced/CardTotalEarings'
-import CardPaymentHistory from 'src/views/ui/cards/advanced/CardPaymentHistory'
-import CardMeetingSchedule from 'src/views/ui/cards/advanced/CardMeetingSchedule'
-import CardActivityTimeline from 'src/views/ui/cards/advanced/CardActivityTimeline'
-import CardSalesInCountries from 'src/views/ui/cards/advanced/CardSalesInCountries'
-import CardGeneralStatistics from 'src/views/ui/cards/advanced/CardGeneralStatistics'
-import CardProjectStatistics from 'src/views/ui/cards/advanced/CardProjectStatistics'
-import CardTopReferralSources from 'src/views/ui/cards/advanced/CardTopReferralSources'
-import CardSocialNetworkVisits from 'src/views/ui/cards/advanced/CardSocialNetworkVisits'
-import CardSubscribersByCountries from 'src/views/ui/cards/advanced/CardSubscribersByCountries'
+// ** Styled Component Import
+import ApexChartWrapper from 'src/@core/styles/libs/react-apexcharts'
 
-const CardsAdvanced = () => {
+// ** Demo Components Imports
+import CardWidgetsVisitsByDay from 'src/views/ui/cards/widgets/CardWidgetsVisitsByDay'
+import CardWidgetsWeeklySales from 'src/views/ui/cards/widgets/CardWidgetsWeeklySales'
+import CardWidgetsPerformance from 'src/views/ui/cards/widgets/CardWidgetsPerformance'
+import CardWidgetsSalesCountry from 'src/views/ui/cards/widgets/CardWidgetsSalesCountry'
+import CardWidgetsMonthlyBudget from 'src/views/ui/cards/widgets/CardWidgetsMonthlyBudget'
+import CardWidgetsExternalLinks from 'src/views/ui/cards/widgets/CardWidgetsExternalLinks'
+import CardWidgetsWeeklyOverview from 'src/views/ui/cards/widgets/CardWidgetsWeeklyOverview'
+import CardWidgetsOrganicSessions from 'src/views/ui/cards/widgets/CardWidgetsOrganicSessions'
+import CardWidgetsProjectTimeline from 'src/views/ui/cards/widgets/CardWidgetsProjectTimeline'
+import CardWidgetsActivityTimeline from 'src/views/ui/cards/widgets/CardWidgetsActivityTimeline'
+import CardWidgetsTotalTransactions from 'src/views/ui/cards/widgets/CardWidgetsTotalTransactions'
+
+import CardImgTop from 'src/views/ui/cards/basic/CardImgTop'
+import CardUser from 'src/views/ui/cards/basic/CardUser'
+import TableColumns from 'src/views/table/data-grid/TableColumns'
+
+import CardMostPopular from 'src/views/ui/cards/advanced/CardMostPopularCar'
+import CardHighestRevenueCar from 'src/views/ui/cards/advanced/CardHighestRevenueCar'
+import CardHighestInspecturoScoreOwner from 'src/views/ui/cards/advanced/CardHighestInspecturoScoreOwner'
+import CardMostPopularOwner from 'src/views/ui/cards/advanced/CardMostPopularOwner'
+import CardHighestEarningOwner from 'src/views/ui/cards/advanced/CardHighestEarningOwner'
+import OwnersTable3 from 'src/views/ui/cards/basic/OwnersTable3'
+import CardWidgetsPerformanceOverview from 'src/views/ui/cards/widgets/CardWidgetsPerformanceOverview'
+
+const CardWidgets = () => {
   return (
-    <Grid container spacing={6} className='match-height'>
-      <Grid item xs={12} md={6} lg={4}>
-        <CardTransactions />
+    <ApexChartWrapper>
+      <Grid container spacing={6}>
+        <Grid item xs={12} sm={12} md={4}>
+          <CardMostPopularOwner />
+        </Grid>
+        <Grid item xs={12} sm={12} md={4}>
+          <CardHighestEarningOwner />
+        </Grid>
+        <Grid item xs={12} sm={12} md={4}>
+          <CardHighestInspecturoScoreOwner />
+        </Grid>
+        <Grid item xs={12} sm={12} md={12}>
+          <OwnersTable3 />
+        </Grid>
       </Grid>
-      <Grid item xs={12} md={6} lg={4}>
-        <CardPlanUpgrade />
-      </Grid>
-      <Grid item xs={12} md={6} lg={4}>
-        <CardMeetingSchedule />
-      </Grid>
-      <Grid item xs={12} md={6} lg={4}>
-        <CardProjectStatistics />
-      </Grid>
-      <Grid item xs={12} lg={8}>
-        <CardTopReferralSources />
-      </Grid>
-      <Grid item xs={12} md={6} lg={4}>
-        <CardTotalEarnings />
-      </Grid>
-      <Grid item xs={12} md={6} lg={4}>
-        <CardSocialNetworkVisits />
-      </Grid>
-      <Grid item xs={12} md={6} lg={4}>
-        <CardGeneralStatistics />
-      </Grid>
-      <Grid item xs={12} md={6} lg={4}>
-        <CardSalesInCountries />
-      </Grid>
-      <Grid item xs={12} md={6} lg={4}>
-        <CardPaymentHistory />
-      </Grid>
-      <Grid item xs={12} md={6} lg={4}>
-        <CardSubscribersByCountries />
-      </Grid>
-      <Grid item xs={12} md={6} lg={8}>
-        <CardActivityTimeline />
-      </Grid>
-      <Grid item xs={12} md={6} lg={4}>
-        <CardFinanceApp />
-      </Grid>
-    </Grid>
+    </ApexChartWrapper>
   )
 }
 
-export default CardsAdvanced
+export default CardWidgets

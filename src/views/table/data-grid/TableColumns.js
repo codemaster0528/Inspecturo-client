@@ -20,7 +20,7 @@ import CustomAvatar from 'src/@core/components/mui/avatar'
 import { getInitials } from 'src/@core/utils/get-initials'
 
 // ** Data Import
-import { rows } from 'src/@fake-db/table/static-data'
+import { rows } from 'src/@fake-db/table/static-data2'
 
 // ** renders client column
 const renderClient = params => {
@@ -53,7 +53,6 @@ const statusObj = {
 const getFullName = params =>
   toast(
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
-      {renderClient(params)}
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
           {params.row.full_name}
@@ -71,7 +70,7 @@ const TableColumns = () => {
     {
       flex: 0.25,
       minWidth: 290,
-      field: 'full_name',
+      field: 'State',
       headerName: 'State',
       hide: hideNameColumn,
       renderCell: params => {
@@ -79,13 +78,9 @@ const TableColumns = () => {
 
         return (
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            {renderClient(params)}
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
               <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
-                {row.full_name}
-              </Typography>
-              <Typography noWrap variant='caption'>
-                {row.email}
+                {row.state}
               </Typography>
             </Box>
           </Box>
@@ -96,39 +91,48 @@ const TableColumns = () => {
       flex: 0.175,
       minWidth: 120,
       headerName: 'Previous Tips',
-      field: 'Date',
+      field: 'PriviousTips',
       renderCell: params => (
         <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.start_date}
+          {params.row.previousTips}
         </Typography>
       )
     },
     {
       flex: 0.15,
       minWidth: 110,
-      field: 'salary',
+      field: 'NewTips',
       headerName: 'New Tips',
       renderCell: params => (
         <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.salary}
+          {params.row.newTips}
         </Typography>
       )
     },
     {
       flex: 0.1,
-      field: 'age',
-      minWidth: 80,
+      minWidth: 140,
+      field: 'Growth',
       headerName: 'Growth',
-      renderCell: params => (
-        <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.age}
-        </Typography>
-      )
+      renderCell: params => {
+        let color = 'success'
+        if (params.row.growth < 0) color = 'error'
+
+        return (
+          <CustomChip
+            size='small'
+            skin='light'
+            color={color}
+            label={params.row.growth > 0 ? params.row.growth + '%' : params.row.growth + '%'}
+            sx={{ '& .MuiChip-label': { textTransform: 'capitalize' } }}
+          />
+        )
+      }
     }
   ]
 
   return (
-    <Card>
+    <Card sx={{ height: 350 }}>
       <CardHeader title='State-by-State Growth' />
       <DataGrid
         autoHeight

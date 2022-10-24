@@ -20,7 +20,9 @@ import CardImgTop from 'src/views/ui/cards/basic/CardImgTop'
 import CardUser from 'src/views/ui/cards/basic/CardUser'
 import TableColumns from 'src/views/table/data-grid/TableColumns'
 
-import CardFinanceApp from 'src/views/ui/cards/advanced/CardFinanceApp'
+import CardMostPopularCar from 'src/views/ui/cards/advanced/CardMostPopularCar'
+import CardHighestRevenueCar from 'src/views/ui/cards/advanced/CardHighestRevenueCar'
+import CardMostPopularOwner from 'src/views/ui/cards/advanced/CardMostPopularOwner'
 import CardWidgetsPerformanceOverview from 'src/views/ui/cards/widgets/CardWidgetsPerformanceOverview'
 
 const CardWidgets = () => {
@@ -28,13 +30,13 @@ const CardWidgets = () => {
     <ApexChartWrapper>
       <Grid container spacing={6}>
         <Grid item xs={12} sm={12} md={4}>
-          <CardFinanceApp />
+          <CardMostPopularCar />
         </Grid>
         <Grid item xs={12} sm={12} md={4}>
-          <CardFinanceApp />
+          <CardHighestRevenueCar />
         </Grid>
         <Grid item xs={12} sm={12} md={4}>
-          <CardFinanceApp />
+          <CardMostPopularOwner />
         </Grid>
         <Grid item xs={12} sm={6}>
           <CardImgTop />

@@ -89,7 +89,7 @@ function DetailPanelContent() {
   )
 }
 
-const TableColumns = () => {
+const TableMostPopularCars = () => {
   // ** States
   const [pageSize, setPageSize] = useState(7)
   const [hideNameColumn, setHideNameColumn] = useState(false)
@@ -228,7 +228,6 @@ const TableColumns = () => {
 
   return (
     <Card>
-      <CardHeader title='Search Ranking' />
       <DataGridPro
         autoHeight
         rows={rows}
@@ -245,4 +244,4 @@ const TableColumns = () => {
   )
 }
 
-export default TableColumns
+export default TableMostPopularCars

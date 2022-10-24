@@ -16,6 +16,7 @@ import Paperclip from 'mdi-material-ui/Paperclip'
 import DotsVertical from 'mdi-material-ui/DotsVertical'
 import CheckCircleOutline from 'mdi-material-ui/CheckCircleOutline'
 import PiggyBank from 'mdi-material-ui/PiggyBank'
+import Car from 'mdi-material-ui/Car'
 import Star from 'mdi-material-ui/Star'
 import Calendar from 'mdi-material-ui/Calendar'
 import Account from 'mdi-material-ui/Account'
@@ -35,32 +36,33 @@ const StyledBox = styled(Box)(({ theme }) => ({
   }
 }))
 
-const CardFinanceApp = () => {
+const CardHighestInspecturoScoreCar = () => {
   return (
-    <Card>
-      <CardMedia
-        sx={{ height: 150, width: 150, borderRadius: 40, margin: 'auto', mt: 5 }}
-        image='/images/cards/iPhone-bg.png'
-      />
+    <Card sx={{ height: 500 }}>
+      <CardMedia sx={{ height: 150, width: 150, borderRadius: 40, margin: 'auto', mt: 5 }} image='/images/cars/3.png' />
       <CardContent sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', textAlign: 'center' }}>
         <Typography variant='h6' sx={{ mb: 1 }}>
           CarMake CarModel CarYear
         </Typography>
         <Typography variant='body2' sx={{ mb: 4, fontWeight: 600 }}>
-          Most Popular Car
+          Highest Inspecturo Score
         </Typography>
         <Typography variant='body2' sx={{ mb: 4, fontWeight: 600 }}>
           Value
         </Typography>
         <Typography variant='body2' sx={{ mb: 4, fontWeight: 600 }}>
-          Total Trips
+          Out of 100
         </Typography>
         <Grid container spacing={4}>
           <Grid item xs={12} sm={12}>
             <StyledBox>
               <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
+                <Car sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
+                <Typography variant='body2'>Car Trips</Typography>
+              </Box>
+              <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
                 <PiggyBank sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
-                <Typography variant='body2'>Currency Symbol Car Reveune</Typography>
+                <Typography variant='body2'>Car Trips</Typography>
               </Box>
               <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
                 <Star sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
@@ -70,10 +72,6 @@ const CardFinanceApp = () => {
                 <Account sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
                 <Typography variant='body2'>Driver Name</Typography>
               </Box>
-              <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
-                <Star sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
-                <Typography variant='body2'>Driver Rating</Typography>
-              </Box>
             </StyledBox>
           </Grid>
         </Grid>
@@ -82,4 +80,4 @@ const CardFinanceApp = () => {
   )
 }
 
-export default CardFinanceApp
+export default CardHighestInspecturoScoreCar
