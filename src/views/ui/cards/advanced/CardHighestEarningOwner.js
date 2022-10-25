@@ -40,12 +40,12 @@ const CardHighestEarningOwner = () => {
   return (
     <Card sx={{ height: 500 }}>
       <CardMedia
-        sx={{ height: 150, width: 150, borderRadius: 40, margin: 'auto', mt: 5, border: 1, borderColor: 'white' }}
+        sx={{ height: 150, width: 150, borderRadius: 40, margin: 'auto', mt: 5 }}
         image='/images/svgs/highest-earning-owner.svg'
       />
       <CardContent sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', textAlign: 'center' }}>
         <Typography variant='h6' sx={{ mb: 1 }}>
-          Driver Name
+          Jacob Roberto Willam
         </Typography>
         <Typography variant='body2' sx={{ mb: 4, fontWeight: 600 }}>
           Most Owner
@@ -53,31 +53,28 @@ const CardHighestEarningOwner = () => {
         <Typography variant='body2' sx={{ mb: 4, fontWeight: 600 }}>
           Value
         </Typography>
-        <Typography variant='body2' sx={{ mb: 4, fontWeight: 600 }}>
+        <Typography variant='body2' sx={{ mb: 0, fontWeight: 600 }}>
           Most Trips
         </Typography>
-        <Grid container spacing={4}>
-          <Grid item xs={12} sm={12}>
-            <StyledBox>
-              <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
-                <Car sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
-                <Typography variant='body2'>Driver Trips</Typography>
-              </Box>
-              <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
-                <Star sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
-                <Typography variant='body2'>Driver Rating</Typography>
-              </Box>
-              <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
-                <Star sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
-                <Typography variant='body2'>Driver Inspecturo Score</Typography>
-              </Box>
-              <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
-                <Calendar sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
-                <Typography variant='body2'>Driver Join Date</Typography>
-              </Box>
-            </StyledBox>
-          </Grid>
-        </Grid>
+        <Typography variant='h6' sx={{ mb: 1 }}>
+          <p style={{ visibility: 'hidden', height: 0, marginTop: 0 }}>Jacob Roberto William</p>
+          <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
+            <Car sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
+            <Typography variant='body2'>Driver Trips</Typography>
+          </Box>
+          <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
+            <Star sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
+            <Typography variant='body2'>Driver Rating</Typography>
+          </Box>
+          <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
+            <Star sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
+            <Typography variant='body2'>Driver Inspecturo Score</Typography>
+          </Box>
+          <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
+            <Calendar sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
+            <Typography variant='body2'>Driver Join Date</Typography>
+          </Box>
+        </Typography>
       </CardContent>
     </Card>
   )

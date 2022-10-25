@@ -8,18 +8,18 @@ import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 import AvatarGroup from '@mui/material/AvatarGroup'
 
-const CardUser = () => {
+const FrameOnLearn = () => {
   return (
-    <Card sx={{ position: 'relative', height: 'auto' }}>
+    <Card sx={{ position: 'relative', height: 650 }}>
       <CardContent>
         <Box>
           <Box sx={{ mr: 2, mb: 6, display: 'flex', flexDirection: 'column' }}>
-            <Typography variant='h6'>ROBERT MAYER</Typography>
+            <Typography variant='h6'> LEARN HOW TO MAKE MORE MONEY ON TURO</Typography>
           </Box>
         </Box>
         <Box>
           <Box sx={{ mr: 2, mb: 1, display: 'flex', flexDirection: 'column' }}>
-            <iframe src='https://www.zenergist.com/' frameBorder='0' />
+            <iframe src='https://www.zenergist.com/' height='570' frameBorder='0' />
           </Box>
         </Box>
       </CardContent>
@@ -27,4 +27,4 @@ const CardUser = () => {
   )
 }
 
-export default CardUser
+export default FrameOnLearn

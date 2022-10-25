@@ -133,7 +133,7 @@ const TableColumns = () => {
 
   return (
     <Card sx={{ height: 350 }}>
-      <CardHeader title='State-by-State Growth' />
+      <CardHeader title='STATE-BY-STATE GROWTH' />
       <DataGrid
         autoHeight
         rows={rows}

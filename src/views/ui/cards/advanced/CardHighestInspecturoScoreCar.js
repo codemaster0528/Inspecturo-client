@@ -53,28 +53,25 @@ const CardHighestInspecturoScoreCar = () => {
         <Typography variant='body2' sx={{ mb: 4, fontWeight: 600 }}>
           Out of 100
         </Typography>
-        <Grid container spacing={4}>
-          <Grid item xs={12} sm={12}>
-            <StyledBox>
-              <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
-                <Car sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
-                <Typography variant='body2'>Car Trips</Typography>
-              </Box>
-              <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
-                <PiggyBank sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
-                <Typography variant='body2'>Car Trips</Typography>
-              </Box>
-              <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
-                <Star sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
-                <Typography variant='body2'>Car Rating</Typography>
-              </Box>
-              <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
-                <Account sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
-                <Typography variant='body2'>Driver Name</Typography>
-              </Box>
-            </StyledBox>
-          </Grid>
-        </Grid>
+        <Typography variant='h6' sx={{ mb: 1 }}>
+          <p style={{ visibility: 'hidden', height: 0, marginTop: 0 }}>CarMake CarModel CarYear</p>
+          <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
+            <Car sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
+            <Typography variant='body2'>Car Trips</Typography>
+          </Box>
+          <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
+            <PiggyBank sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
+            <Typography variant='body2'>Car Trips</Typography>
+          </Box>
+          <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
+            <Star sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
+            <Typography variant='body2'>Car Rating</Typography>
+          </Box>
+          <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
+            <Account sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
+            <Typography variant='body2'>Driver Name</Typography>
+          </Box>
+        </Typography>
       </CardContent>
     </Card>
   )

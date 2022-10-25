@@ -8,7 +8,7 @@ const CardImgTop = () => {
   return (
     <Card sx={{ height: 350 }}>
       <CardContent sx={{ pt: 4 }}>
-        <Typography variant='h6'>Heatmap of Turo Cars in Your State</Typography>
+        <Typography variant='h6'>HEATMAP OF TURO CARS IN YOUR STATE</Typography>
       </CardContent>
       <CardMedia sx={{ height: 280 }} image='/images/cars/cars.png' />
     </Card>

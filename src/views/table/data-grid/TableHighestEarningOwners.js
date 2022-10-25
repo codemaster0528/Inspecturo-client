@@ -146,7 +146,7 @@ const TableHighestEarningOwners = () => {
       headerName: 'Rating',
       renderCell: params => (
         <Rating
-          sx={{ color: '#fff' }}
+          sx={{ color: '#593CFB' }}
           defaultValue={params.row.driverRating}
           precision={0.1}
           name='half-rating'
@@ -187,9 +187,7 @@ const TableHighestEarningOwners = () => {
         getDetailPanelContent={getDetailPanelContent}
         getDetailPanelHeight={getDetailPanelHeight} // Optional, default is 500px.
         pageSize={pageSize}
-        disableSelectionOnClick
-        rowsPerPageOptions={[7, 10, 25, 50]}
-        onPageSizeChange={newPageSize => setPageSize(newPageSize)}
+        hideFooter
       />
     </Card>
   )

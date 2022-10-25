@@ -148,7 +148,7 @@ const TableColumns = () => {
 
   return (
     <Card>
-      <DataGrid rows={rows} columns={columns} pageSize={pageSize} />
+      <DataGrid rows={rows} columns={columns} pageSize={pageSize} hideFooter />
     </Card>
   )
 }

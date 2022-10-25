@@ -70,7 +70,7 @@ const CardMobile = () => {
         >
           <CardContent>
             <Typography variant='h6' sx={{ mb: 2 }}>
-              Ask Inspecturo
+              ASK INSPECTURO
             </Typography>
             <Typography variant='body2' sx={{ mb: 0 }}>
               <FormControl sx={{ width: '100%', borderTopLeftRadius: 0, borderTopRightRadius: 0 }}>

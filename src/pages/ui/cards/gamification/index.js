@@ -1,29 +1,43 @@
 // ** MUI Imports
 import Grid from '@mui/material/Grid'
 
-// ** Demo Components Imports
-import CardAward from 'src/views/ui/cards/gamification/CardAward'
-import CardUpgradeAccount from 'src/views/ui/cards/gamification/CardUpgradeAccount'
-import CardCongratulationsJohn from 'src/views/ui/cards/gamification/CardCongratulationsJohn'
-import CardCongratulationsDaisy from 'src/views/ui/cards/gamification/CardCongratulationsDaisy'
+// ** Styled Component Import
+import ApexChartWrapper from 'src/@core/styles/libs/react-apexcharts'
 
-const CardGamification = () => {
+// ** Demo Components Imports
+import CardWidgetsVisitsByDay from 'src/views/ui/cards/widgets/CardWidgetsVisitsByDay'
+import CardWidgetsWeeklySales from 'src/views/ui/cards/widgets/CardWidgetsWeeklySales'
+import CardWidgetsPerformance from 'src/views/ui/cards/widgets/CardWidgetsPerformance'
+import CardWidgetsSalesCountry from 'src/views/ui/cards/widgets/CardWidgetsSalesCountry'
+import CardWidgetsMonthlyBudget from 'src/views/ui/cards/widgets/CardWidgetsMonthlyBudget'
+import CardWidgetsExternalLinks from 'src/views/ui/cards/widgets/CardWidgetsExternalLinks'
+import CardWidgetsWeeklyOverview from 'src/views/ui/cards/widgets/CardWidgetsWeeklyOverview'
+import CardWidgetsOrganicSessions from 'src/views/ui/cards/widgets/CardWidgetsOrganicSessions'
+import CardWidgetsProjectTimeline from 'src/views/ui/cards/widgets/CardWidgetsProjectTimeline'
+import CardWidgetsActivityTimeline from 'src/views/ui/cards/widgets/CardWidgetsActivityTimeline'
+import CardWidgetsTotalTransactions from 'src/views/ui/cards/widgets/CardWidgetsTotalTransactions'
+import CardImgTop from 'src/views/ui/cards/basic/CardImgTop'
+
+import CardUser from 'src/views/ui/cards/basic/CardUser'
+import FrameOnLocation from 'src/views/ui/cards/basic/iFrameOnLocationPage'
+
+import TableColumns from 'src/views/table/data-grid/TableColumns'
+
+import CardMostPopularCar from 'src/views/ui/cards/advanced/CardMostPopularCar'
+import CardHighestRevenueCar from 'src/views/ui/cards/advanced/CardHighestRevenueCar'
+import CardMostPopularOwner from 'src/views/ui/cards/advanced/CardMostPopularOwner'
+import CardWidgetsPerformanceOverview from 'src/views/ui/cards/widgets/CardWidgetsPerformanceOverview'
+
+const CardWidgets = () => {
   return (
-    <Grid container spacing={6} className='match-height'>
-      <Grid item xs={12} md={4}>
-        <CardAward />
+    <ApexChartWrapper>
+      <Grid container spacing={6}>
+        <Grid item xs={12} sm={12}>
+          <FrameOnLocation />
+        </Grid>
       </Grid>
-      <Grid item xs={12} md={8}>
-        <CardCongratulationsJohn />
-      </Grid>
-      <Grid item xs={12} md={8}>
-        <CardCongratulationsDaisy />
-      </Grid>
-      <Grid item xs={12} md={4}>
-        <CardUpgradeAccount />
-      </Grid>
-    </Grid>
+    </ApexChartWrapper>
   )
 }
 
-export default CardGamification
+export default CardWidgets

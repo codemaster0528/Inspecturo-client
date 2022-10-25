@@ -49,31 +49,28 @@ const CardMostPopularCar = () => {
         <Typography variant='body2' sx={{ mb: 4, fontWeight: 600 }}>
           Value
         </Typography>
-        <Typography variant='body2' sx={{ mb: 4, fontWeight: 600 }}>
+        <Typography variant='body2' sx={{ mb: 0, fontWeight: 600 }}>
           Total Trips
         </Typography>
-        <Grid container spacing={4}>
-          <Grid item xs={12} sm={12}>
-            <StyledBox>
-              <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
-                <PiggyBank sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
-                <Typography variant='body2'>Currency Symbol Car Revenue</Typography>
-              </Box>
-              <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
-                <Star sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
-                <Typography variant='body2'>Car Rating</Typography>
-              </Box>
-              <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
-                <Account sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
-                <Typography variant='body2'>Driver Name</Typography>
-              </Box>
-              <Box sx={{ py: 1.25, mb: 1, display: 'flex', alignItems: 'center' }}>
-                <Star sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
-                <Typography variant='body2'>Driver Rating</Typography>
-              </Box>
-            </StyledBox>
-          </Grid>
-        </Grid>
+        <Typography variant='h6' sx={{ mb: 1 }}>
+          <p style={{ visibility: 'hidden', height: 0, marginTop: 0 }}>CarMake CarModel CarYear</p>
+          <Box sx={{ py: 1.25, mb: 1, display: 'flex', justifyContent: 'flex-start' }}>
+            <PiggyBank sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
+            <Typography variant='body2'>Currency Symbol Car Revenue</Typography>
+          </Box>
+          <Box sx={{ py: 1.25, mb: 1, display: 'flex' }}>
+            <Star sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
+            <Typography variant='body2'>Car Rating</Typography>
+          </Box>
+          <Box sx={{ py: 1.25, mb: 1, display: 'flex' }}>
+            <Account sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
+            <Typography variant='body2'>Driver Name</Typography>
+          </Box>
+          <Box sx={{ py: 1.25, mb: 1, display: 'flex' }}>
+            <Star sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
+            <Typography variant='body2'>Driver Rating</Typography>
+          </Box>
+        </Typography>
       </CardContent>
     </Card>
   )

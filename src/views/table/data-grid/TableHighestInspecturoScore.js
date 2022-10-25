@@ -103,7 +103,7 @@ const TableHighestInspecturoScore = () => {
       flex: 0.15,
       minWidth: 150,
       field: 'CarName',
-      headerName: 'Car Name',
+      headerName: '',
       hide: hideNameColumn,
       renderCell: params => {
         const { row } = params
@@ -122,17 +122,6 @@ const TableHighestInspecturoScore = () => {
           </Box>
         )
       }
-    },
-    {
-      flex: 0.18,
-      minWidth: 120,
-      headerName: 'Car',
-      field: 'Car',
-      renderCell: params => (
-        <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.carMake + ', ' + params.row.carModel + ', ' + params.row.carYear}
-        </Typography>
-      )
     },
     {
       flex: 0.1,
@@ -181,7 +170,13 @@ const TableHighestInspecturoScore = () => {
       minWidth: 80,
       headerName: 'Rating',
       renderCell: params => (
-        <Rating sx={{ color: '#fff' }} defaultValue={params.row.rating} precision={0.1} name='half-rating' readOnly />
+        <Rating
+          sx={{ color: '#593CFB' }}
+          defaultValue={params.row.rating}
+          precision={0.1}
+          name='half-rating'
+          readOnly
+        />
       )
     },
     {
@@ -235,7 +230,7 @@ const TableHighestInspecturoScore = () => {
       headerName: 'Owner Rating',
       renderCell: params => (
         <Rating
-          sx={{ color: '#fff' }}
+          sx={{ color: '#593CFB' }}
           defaultValue={params.row.ownerRating}
           precision={0.1}
           name='half-rating'
@@ -255,9 +250,7 @@ const TableHighestInspecturoScore = () => {
         getDetailPanelContent={getDetailPanelContent}
         getDetailPanelHeight={getDetailPanelHeight} // Optional, default is 500px.
         pageSize={pageSize}
-        disableSelectionOnClick
-        rowsPerPageOptions={[7, 10, 25, 50]}
-        onPageSizeChange={newPageSize => setPageSize(newPageSize)}
+        hideFooter
       />
     </Card>
   )
