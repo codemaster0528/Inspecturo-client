@@ -15,7 +15,7 @@ import SwiperLoop from 'src/views/components/swiper/SwiperLoop'
 import CardSnippet from 'src/@core/components/card-snippet'
 import { useKeenSlider } from 'keen-slider/react'
 import KeenSliderWrapper from 'src/@core/styles/libs/keen-slider'
-import TableColumns2 from 'src/views/table/data-grid/TableColumns2'
+import CarDetailInfo from 'src/views/table/data-grid/TableCarDetailInfo'
 
 // ** Third Party Components
 import toast from 'react-hot-toast'

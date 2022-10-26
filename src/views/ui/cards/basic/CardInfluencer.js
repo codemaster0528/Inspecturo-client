@@ -28,16 +28,36 @@ const CardInfluencer = () => {
               id='demo-simple-select-autoWidth'
               labelId='demo-simple-select-autoWidth-label'
             >
-              <MenuItem value={10}>What are the most popular cars in my State?</MenuItem>
-              <MenuItem value={20}>What are the highest earning cars in my State?</MenuItem>
-              <MenuItem value={30}>Which Owners have the most trips in my State?</MenuItem>
-              <MenuItem value={40}>What Owners make the most money in my State? </MenuItem>
-              <MenuItem value={50}>Where are all the Turo cars in my State?</MenuItem>
-              <MenuItem value={60}>What are the most popular States for Turo?</MenuItem>
-              <MenuItem value={70}>What locations would be ideal for a new Turo car in my State?</MenuItem>
-              <MenuItem value={80}>What car should I buy for Turo in my State?</MenuItem>
-              <MenuItem value={90}>What is the most popular car fuel type in my State?</MenuItem>
-              <MenuItem value={100}>What are the search positions of cars in my State?</MenuItem>
+              <MenuItem value={10} id='cars-trips'>
+                What are the most popular cars in my State?
+              </MenuItem>
+              <MenuItem value={20} id='cars-revenue'>
+                What are the highest earning cars in my State?
+              </MenuItem>
+              <MenuItem value={30} id='owner-trips'>
+                Which Owners have the most trips in my State?
+              </MenuItem>
+              <MenuItem value={40} id='owner-revenue'>
+                What Owners make the most money in my State?{' '}
+              </MenuItem>
+              <MenuItem value={50} id='states-heatmap'>
+                Where are all the Turo cars in my State?
+              </MenuItem>
+              <MenuItem value={60} id='states-popular'>
+                What are the most popular States for Turo?
+              </MenuItem>
+              <MenuItem value={70} id='cars-location-opportunities'>
+                What locations would be ideal for a new Turo car in my State?
+              </MenuItem>
+              <MenuItem value={80} id='cars-opportunity'>
+                What car should I buy for Turo in my State?
+              </MenuItem>
+              <MenuItem value={90} id='cars-popular-fuel'>
+                What is the most popular car fuel type in my State?
+              </MenuItem>
+              <MenuItem value={100} id='cars-search-rankings'>
+                What are the search positions of cars in my State?
+              </MenuItem>
             </Select>
           </FormControl>
         </Typography>

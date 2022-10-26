@@ -125,6 +125,7 @@ const LoginPage = () => {
   const [loginErrorMsg, setLoginErrorMsg] = useState('Email and Password are incorrect!') // Error Text When Login Failed
   const [loginValidateError, setLoginValidateError] = useState(false) // State about Login Success or Failed
   const [loginBtnDisable, setLoginBtnDisable] = useState(false) // Disable & grey out login button after each request to stop the user from clicking
+  const [loginCount, setLoginCount] = useState(0)
 
   // ** Hooks
   const auth = useAuth()
@@ -148,6 +149,8 @@ const LoginPage = () => {
   })
 
   const onSubmit = data => {
+    if (loginCount == 3) return // Prevent against brute force logins
+    setLoginCount(loginCount => loginCount + 1)
     setLoginBtnDisable(true)
     const { email, password } = data
     auth.login({ email, password }, () => {

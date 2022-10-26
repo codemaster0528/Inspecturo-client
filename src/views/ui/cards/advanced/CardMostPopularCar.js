@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from 'react'
+
 // ** MUI Import
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
@@ -36,12 +38,41 @@ const StyledBox = styled(Box)(({ theme }) => ({
 }))
 
 const CardMostPopularCar = () => {
+  const [dataFromAPI, setDataFromAPI] = useState([])
+
+  useEffect(() => {
+    getDataFromAPI()
+  }, [])
+
+  const getDataFromAPI = async () => {
+    var myHeaders = new Headers()
+    myHeaders.append('Content-Type', 'application/x-www-form-urlencoded')
+
+    var urlencoded = new URLSearchParams()
+    urlencoded.append('ascout_keyValue', 'zD3BVPtyimdhrNBX5')
+    urlencoded.append('regionId', '1')
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: urlencoded,
+      redirect: 'follow'
+    }
+
+    fetch('http://161.35.118.186/mkulima/gari/safari', requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        setDataFromAPI(result.data)
+      })
+      .catch(error => console.log('error', error))
+  }
+
   return (
     <Card sx={{ height: 500 }}>
       <CardMedia sx={{ height: 150, width: 150, borderRadius: 40, margin: 'auto', mt: 5 }} image='/images/cars/1.png' />
       <CardContent sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', textAlign: 'center' }}>
         <Typography variant='h6' sx={{ mb: 1 }}>
-          CarMake CarModel CarYear
+          {dataFromAPI.carMake} {dataFromAPI.carModel} {dataFromAPI.carYear}
         </Typography>
         <Typography variant='body2' sx={{ mb: 4, fontWeight: 600 }}>
           Most Popular Car

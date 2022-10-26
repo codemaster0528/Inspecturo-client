@@ -1,3 +1,5 @@
+import React, { useState } from 'react'
+
 // ** MUI Imports
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
@@ -17,14 +19,14 @@ import CardNavigation from 'src/views/ui/cards/basic/CarsTable3'
 import CardWithCollapse from 'src/views/ui/cards/basic/CardWithCollapse'
 import CardVerticalRatings from 'src/views/ui/cards/basic/CardVerticalRatings'
 import CardNavigationCenter from 'src/views/ui/cards/basic/CardNavigationCenter'
-import TableColumns1 from 'src/views/table/data-grid/TableColumns1'
+import TableSearchRanking from 'src/views/table/data-grid/TableSearchRanking'
 import CardHorizontalRatings from 'src/views/ui/cards/basic/CardHorizontalRatings'
 
 const CardBasic = () => {
   return (
     <Grid container spacing={6}>
       <Grid item xs={12} sm={12}>
-        <TableColumns1 />
+        <TableSearchRanking />
       </Grid>
     </Grid>
   )

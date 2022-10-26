@@ -69,46 +69,21 @@ const getFullName = params =>
     </Box>
   )
 
-function DetailPanelContent() {
-  const [ref] = useKeenSlider({
-    loop: true,
-    rtl: 'rtl'
-  })
-
-  return (
-    <KeenSliderWrapper>
-      <Grid container spacing={6} className='match-height'>
-        <Grid item xs={12} sm={6}>
-          <SwiperLoop direction='rtl' />
-        </Grid>
-
-        <Grid item xs={12} sm={6}>
-          12321321
-        </Grid>
-      </Grid>
-    </KeenSliderWrapper>
-  )
-}
-
-const TableColumns = () => {
+const CarDetailInfo = ({ info }) => {
   // ** States
   const [pageSize, setPageSize] = useState(7)
   const [hideNameColumn, setHideNameColumn] = useState(false)
 
-  const getDetailPanelContent = React.useCallback(({ row }) => <DetailPanelContent row={row} />, [])
-
-  const getDetailPanelHeight = React.useCallback(() => 'auto', [])
-
   const columns = [
     {
-      flex: 0.1,
-      minWidth: 140,
+      flex: 0.03,
+      minWidth: 100,
       field: 'FuelType',
       headerName: 'Fuel Type',
       renderCell: params => {
         let color = 'primany'
-        if (params.row.fuelType == 'DIESEL') color = 'primary'
-        else if (params.row.fuelType == 'GASOLINE') color = 'warning'
+        if (params.row.carFuelType == 'DIESEL') color = 'primary'
+        else if (params.row.carFuelType == 'GASOLINE') color = 'warning'
         else color = 'success'
 
         return (
@@ -116,20 +91,20 @@ const TableColumns = () => {
             size='small'
             skin='light'
             color={color}
-            label={params.row.fuelType}
+            label={params.row.carFuelType}
             sx={{ '& .MuiChip-label': { textTransform: 'capitalize' } }}
           />
         )
       }
     },
     {
-      flex: 0.18,
-      minWidth: 120,
+      flex: 0.02,
+      minWidth: 50,
       headerName: 'Door',
       field: 'Doors',
       renderCell: params => (
         <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.doors}
+          {params.row.carDoors}
         </Typography>
       )
     },
@@ -140,7 +115,7 @@ const TableColumns = () => {
       headerName: 'Description',
       renderCell: params => (
         <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.description}
+          {params.row.carDescription}
         </Typography>
       )
     }
@@ -148,9 +123,9 @@ const TableColumns = () => {
 
   return (
     <Card>
-      <DataGrid rows={rows} columns={columns} pageSize={pageSize} hideFooter />
+      <DataGrid rows={info} columns={columns} pageSize={pageSize} hideFooter />
     </Card>
   )
 }
 
-export default TableColumns
+export default CarDetailInfo
