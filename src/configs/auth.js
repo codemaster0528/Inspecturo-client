@@ -4,5 +4,11 @@ export default {
   registerEndpoint: '/jwt/register',
 
   forgotPasswordEndpoint: '/forgotPassword',
-  storageTokenKeyName: 'accessToken'
+
+  storageTokenKeyName: 'accessToken',
+  storageUserEmail: 'userEmail',
+  storageUserName: 'userName',
+  storageUserRegions: 'userRegions',
+  storageUserStatus: 'userStatus',
+  storageUserAddons: 'userAddons'
 }

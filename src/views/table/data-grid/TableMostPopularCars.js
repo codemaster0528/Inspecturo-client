@@ -1,5 +1,5 @@
 // ** React Imports
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 // ** MUI Imports
 import Box from '@mui/material/Box'
@@ -36,8 +36,10 @@ const renderClient = params => {
   const stateNum = Math.floor(Math.random() * 6)
   const states = ['success', 'error', 'warning', 'info', 'primary', 'secondary']
   const color = states[stateNum]
-  if (row.carImage.length) {
-    return <CustomAvatar src={`/images/cars/${row.carImage}`} sx={{ mr: 3, width: '1.875rem', height: '1.875rem' }} />
+  if (row.carId) {
+    const carImage = '1.png'
+
+    return <CustomAvatar src={`/images/cars/${carImage}`} sx={{ mr: 3, width: '1.875rem', height: '1.875rem' }} />
   } else {
     return (
       <CustomAvatar skin='light' color={color} sx={{ mr: 3, fontSize: '.8rem', width: '1.875rem', height: '1.875rem' }}>
@@ -47,42 +49,27 @@ const renderClient = params => {
   }
 }
 
-const statusObj = {
-  1: { title: 'current', color: 'primary' },
-  2: { title: 'professional', color: 'success' },
-  3: { title: 'rejected', color: 'error' },
-  4: { title: 'resigned', color: 'warning' },
-  5: { title: 'applied', color: 'info' }
-}
-
-// ** Full Name Getter
-const getFullName = params =>
-  toast(
-    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-      {renderClient(params)}
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
-          {params.row.carName}
-        </Typography>
-      </Box>
-    </Box>
-  )
-
-function DetailPanelContent() {
+function DetailPanelContent({ row: rowProp }) {
   const [ref] = useKeenSlider({
     loop: true,
     rtl: 'rtl'
   })
 
+  var detailImages = [rowProp.carPhoto1, rowProp.carPhoto2, rowProp.carPhoto3, rowProp.carPhoto4, rowProp.carPhoto5]
+
+  var detailInfo = [
+    { id: 1, carFuelType: rowProp.carFuelType, carDoors: rowProp.carDoors, carDescription: rowProp.carDescription }
+  ]
+
   return (
     <KeenSliderWrapper>
       <Grid container className='match-height'>
         <Grid item xs={12} sm={6}>
-          <SwiperLoop direction='rtl' />
+          <SwiperLoop direction='rtl' images={detailImages} />
         </Grid>
 
         <Grid item xs={12} sm={6}>
-          <CarDetailInfo />
+          <CarDetailInfo info={detailInfo} />
         </Grid>
       </Grid>
     </KeenSliderWrapper>
@@ -93,10 +80,39 @@ const TableMostPopularCars = () => {
   // ** States
   const [pageSize, setPageSize] = useState(7)
   const [hideNameColumn, setHideNameColumn] = useState(false)
+  const [dataFromAPI, setDataFromAPI] = useState([])
 
   const getDetailPanelContent = React.useCallback(({ row }) => <DetailPanelContent row={row} />, [])
 
   const getDetailPanelHeight = React.useCallback(() => 'auto', [])
+
+  useEffect(() => {
+    if (dataFromAPI.length != 0) return
+    getDataFromAPI()
+  })
+
+  const getDataFromAPI = async () => {
+    var myHeaders = new Headers()
+    myHeaders.append('Content-Type', 'application/x-www-form-urlencoded')
+
+    var urlencoded = new URLSearchParams()
+    urlencoded.append('ascout_keyValue', 'zD3BVPtyimdhrNBX5')
+    urlencoded.append('regionId', '1')
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: urlencoded,
+      redirect: 'follow'
+    }
+
+    fetch('http://161.35.118.186/mkulima/gari/safari', requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        setDataFromAPI(result.data)
+      })
+      .catch(error => console.log('error', error))
+  }
 
   const columns = [
     {
@@ -113,7 +129,7 @@ const TableMostPopularCars = () => {
             {renderClient(params)}
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
               <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
-                {row.carName + ', ' + row.carModel}
+                {row.carMake + ', ' + row.carModel}
               </Typography>
               <Typography noWrap variant='caption'>
                 {row.carYear}
@@ -141,7 +157,7 @@ const TableMostPopularCars = () => {
       headerName: 'Trips',
       renderCell: params => (
         <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.trips}
+          {params.row.carTrips}
         </Typography>
       )
     },
@@ -153,7 +169,7 @@ const TableMostPopularCars = () => {
       renderCell: params => (
         <Rating
           sx={{ color: '#593CFB' }}
-          defaultValue={params.row.rating}
+          defaultValue={Number(params.row.carRating)}
           precision={0.1}
           name='half-rating'
           readOnly
@@ -167,8 +183,8 @@ const TableMostPopularCars = () => {
       headerName: 'Inspecturo Score',
       renderCell: params => {
         let color = 'primany'
-        if (params.row.inspecturoScore <= 30) color = 'error'
-        else if (params.row.inspecturoScore <= 50) color = 'warning'
+        if (params.row.carInspecturoScore <= 30) color = 'error'
+        else if (params.row.carInspecturoScore <= 50) color = 'warning'
         else color = 'success'
 
         return (
@@ -176,7 +192,7 @@ const TableMostPopularCars = () => {
             size='small'
             skin='light'
             color={color}
-            label={params.row.inspecturoScore}
+            label={params.row.carInspecturoScore.toFixed(2)}
             sx={{ '& .MuiChip-label': { textTransform: 'capitalize' } }}
           />
         )
@@ -189,7 +205,7 @@ const TableMostPopularCars = () => {
       headerName: 'Owner',
       renderCell: params => (
         <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.owner}
+          {params.row.DriverName}
         </Typography>
       )
     },
@@ -200,7 +216,7 @@ const TableMostPopularCars = () => {
       headerName: 'Owner Trips',
       renderCell: params => (
         <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.ownerTrips}
+          {params.row.DriverTrips}
         </Typography>
       )
     },
@@ -212,7 +228,7 @@ const TableMostPopularCars = () => {
       renderCell: params => (
         <Rating
           sx={{ color: '#593CFB' }}
-          defaultValue={params.row.ownerRating}
+          defaultValue={params.row.DriverRating}
           precision={0.1}
           name='half-rating'
           readOnly
@@ -225,13 +241,14 @@ const TableMostPopularCars = () => {
     <Card>
       <DataGridPro
         autoHeight
-        rows={rows}
+        rows={dataFromAPI}
         columns={columns}
+        getRowId={row => row.carId}
         rowThreshold={0}
         getDetailPanelContent={getDetailPanelContent}
         getDetailPanelHeight={getDetailPanelHeight} // Optional, default is 500px.
         pageSize={pageSize}
-        hideFooter
+        pagination
       />
     </Card>
   )

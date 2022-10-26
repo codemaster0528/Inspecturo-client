@@ -153,10 +153,13 @@ const LoginPage = () => {
     setLoginCount(loginCount => loginCount + 1)
     setLoginBtnDisable(true)
     const { email, password } = data
-    auth.login({ email, password }, () => {
-      setError('email', {
+    auth.login({ email, password }, err => {
+      const errPart = err.email ? 'email' : 'password'
+      const errText = err.email ? err.email : err.password
+
+      setError(errPart, {
         type: 'manual',
-        message: 'Email or Password is invalid'
+        message: errText
       })
     })
     setLoginBtnDisable(false)

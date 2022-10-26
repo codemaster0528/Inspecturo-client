@@ -120,8 +120,9 @@ const TableSearchRanking = () => {
   const getDetailPanelHeight = React.useCallback(() => 'auto', [])
 
   useEffect(() => {
+    if (dataFromAPI.length != 0) return
     getDataFromAPI()
-  }, [])
+  })
 
   const getDataFromAPI = async () => {
     var myHeaders = new Headers()

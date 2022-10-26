@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from 'react'
+
 // ** Icon imports
 import Table from 'mdi-material-ui/Table'
 import ChartDonut from 'mdi-material-ui/ChartDonut'
@@ -34,28 +36,45 @@ import AccountCircleOutline from 'mdi-material-ui/AccountCircleOutline'
 import MapMarkerOutline from 'mdi-material-ui/MapMarkerOutline'
 import LightbulbOutLine from 'mdi-material-ui/LightbulbOutline'
 
+// ** Config
+import authConfig from 'src/configs/auth'
+
 // ** Context
 import { useAuth } from 'src/hooks/useAuth'
+import { set } from 'nprogress'
 
-const navigation = () => {
+// let children = []
+// for (let i = 0; i < userRegions.length; i++) {
+//   children.push({
+//     title: userRegions[i],
+//     path: '/dashboards/crm'
+//   })
+// }
+
+// console.log(userRegions)
+
+const Navigation = () => {
+  const [regionTree, setRegionTree] = useState([])
+
+  useEffect(() => {
+    const userRegions = JSON.parse(window.localStorage.getItem(authConfig.storageUserRegions))
+    console.log(userRegions[0])
+
+    let tmpRegionTree = []
+    for (let i = 0; i < userRegions.length; i++) {
+      tmpRegionTree.push({
+        title: userRegions[i].inspecturo_regionValue,
+        path: `/dashboards/${i}`
+      })
+    }
+    setRegionTree(tmpRegionTree)
+  }, [])
+
   return [
     {
       title: 'Select States',
       icon: MapMarkerOutline,
-      children: [
-        {
-          title: '1',
-          path: '/dashboards/crm'
-        },
-        {
-          title: '2',
-          path: '/dashboards/analytics'
-        },
-        {
-          title: '3',
-          path: '/dashboards/ecommerce'
-        }
-      ]
+      children: regionTree
     },
     {
       title: 'Dashboard',
@@ -96,4 +115,4 @@ const navigation = () => {
   ]
 }
 
-export default navigation
+export default Navigation

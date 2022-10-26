@@ -38,11 +38,30 @@ const StyledBox = styled(Box)(({ theme }) => ({
 }))
 
 const CardMostPopularCar = () => {
-  const [dataFromAPI, setDataFromAPI] = useState([])
+  const [dataFromAPI, setDataFromAPI] = useState([
+    {
+      driverId: 2519,
+      regionId: 1,
+      driverKey: '722440',
+      driverName: 'András S.',
+      driverLat: '33.94457886026851',
+      driverLong: '-118.37280606827956',
+      driverState: 'CA',
+      driverTrips: 13911,
+      driverJoinDate: '2015-01-07',
+      driverRating: '4.80',
+      driverListingUrl: 'https://turo.com/drivers/722440',
+      dateTimeModified: '2022-09-26 14:28:17',
+      dateTimeAdded: '2022-09-12 12:48:34',
+      driverInspecturoScore: 96.53320967443882,
+      driverRevenue: '4740.12'
+    }
+  ])
 
   useEffect(() => {
+    if (dataFromAPI.length != 1) return
     getDataFromAPI()
-  }, [])
+  })
 
   const getDataFromAPI = async () => {
     var myHeaders = new Headers()
@@ -62,6 +81,9 @@ const CardMostPopularCar = () => {
     fetch('http://161.35.118.186/mkulima/gari/safari', requestOptions)
       .then(response => response.json())
       .then(result => {
+        result.data.sort(function (b, a) {
+          return a.carTrips - b.carTrips
+        })
         setDataFromAPI(result.data)
       })
       .catch(error => console.log('error', error))
@@ -72,34 +94,36 @@ const CardMostPopularCar = () => {
       <CardMedia sx={{ height: 150, width: 150, borderRadius: 40, margin: 'auto', mt: 5 }} image='/images/cars/1.png' />
       <CardContent sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', textAlign: 'center' }}>
         <Typography variant='h6' sx={{ mb: 1 }}>
-          {dataFromAPI.carMake} {dataFromAPI.carModel} {dataFromAPI.carYear}
+          {dataFromAPI[0].carMake} {dataFromAPI[0].carModel} {dataFromAPI[0].carYear}
         </Typography>
         <Typography variant='body2' sx={{ mb: 4, fontWeight: 600 }}>
           Most Popular Car
         </Typography>
-        <Typography variant='body2' sx={{ mb: 4, fontWeight: 600 }}>
-          Value
+        <Typography variant='body2' sx={{ mb: 1, fontWeight: 600 }}>
+          {dataFromAPI[0].carTrips}
         </Typography>
-        <Typography variant='body2' sx={{ mb: 0, fontWeight: 600 }}>
+        <Typography variant='body2' sx={{ mb: 4, fontWeight: 600 }}>
           Total Trips
         </Typography>
         <Typography variant='h6' sx={{ mb: 1 }}>
           <p style={{ visibility: 'hidden', height: 0, marginTop: 0 }}>CarMake CarModel CarYear</p>
           <Box sx={{ py: 1.25, mb: 1, display: 'flex', justifyContent: 'flex-start' }}>
             <PiggyBank sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
-            <Typography variant='body2'>Currency Symbol Car Revenue</Typography>
+            <Typography variant='body2'>
+              {dataFromAPI[0].carCurrency} {dataFromAPI[0].carRevenue}
+            </Typography>
           </Box>
           <Box sx={{ py: 1.25, mb: 1, display: 'flex' }}>
             <Star sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
-            <Typography variant='body2'>Car Rating</Typography>
+            <Typography variant='body2'>{dataFromAPI[0].carRating}</Typography>
           </Box>
           <Box sx={{ py: 1.25, mb: 1, display: 'flex' }}>
             <Account sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
-            <Typography variant='body2'>Driver Name</Typography>
+            <Typography variant='body2'>{dataFromAPI[0].DriverName}</Typography>
           </Box>
           <Box sx={{ py: 1.25, mb: 1, display: 'flex' }}>
             <Star sx={{ color: 'primary.main', mr: 2.5 }} fontSize='small' />
-            <Typography variant='body2'>Driver Rating</Typography>
+            <Typography variant='body2'>{dataFromAPI[0].DriverRating}</Typography>
           </Box>
         </Typography>
       </CardContent>

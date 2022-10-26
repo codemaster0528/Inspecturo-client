@@ -70,6 +70,11 @@ const AuthProvider = ({ children }) => {
       .post(SERVER_URL + authConfig.loginEndpoint, params)
       .then(async res => {
         window.localStorage.setItem(authConfig.storageTokenKeyName, res.data.accessToken)
+        window.localStorage.setItem(authConfig.storageUserEmail, res.data.userEmail)
+        window.localStorage.setItem(authConfig.storageUserName, res.data.userName)
+        window.localStorage.setItem(authConfig.storageUserRegions, JSON.stringify(res.data.userRegions))
+        window.localStorage.setItem(authConfig.storageUserStatus, res.data.userStatus)
+        window.localStorage.setItem(authConfig.storageUserAddons, res.data.userAddons)
       })
       .then(() => {
         axios
@@ -87,7 +92,7 @@ const AuthProvider = ({ children }) => {
           })
       })
       .catch(err => {
-        if (errorCallback) errorCallback(err)
+        if (errorCallback) errorCallback(err.response.data)
       })
   }
 

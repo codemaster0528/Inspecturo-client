@@ -2,7 +2,13 @@ html,
 body {
   min-height: 100%;
 }
+* {
+  -ms-overflow-style: none;
+}
 
+::-webkit-scrollbar {
+  display: none;
+}
 #__next {
   height: 100%;
 }

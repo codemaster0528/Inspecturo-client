@@ -1,5 +1,5 @@
 // ** React Imports
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 // ** MUI Imports
 import Box from '@mui/material/Box'
@@ -30,72 +30,39 @@ import { getInitials } from 'src/@core/utils/get-initials'
 // ** Data Import
 import { rows } from 'src/@fake-db/table/most-popular-owners-data'
 
-// ** renders client column
-const renderClient = params => {
-  const { row } = params
-  const stateNum = Math.floor(Math.random() * 6)
-  const states = ['success', 'error', 'warning', 'info', 'primary', 'secondary']
-  const color = states[stateNum]
-  if (row.carImage.length) {
-    return <CustomAvatar src={`/images/cars/${row.carImage}`} sx={{ mr: 3, width: '1.875rem', height: '1.875rem' }} />
-  } else {
-    return (
-      <CustomAvatar skin='light' color={color} sx={{ mr: 3, fontSize: '.8rem', width: '1.875rem', height: '1.875rem' }}>
-        {getInitials(row.carName ? row.carName : 'John Doe')}
-      </CustomAvatar>
-    )
-  }
-}
-
-const statusObj = {
-  1: { title: 'current', color: 'primary' },
-  2: { title: 'professional', color: 'success' },
-  3: { title: 'rejected', color: 'error' },
-  4: { title: 'resigned', color: 'warning' },
-  5: { title: 'applied', color: 'info' }
-}
-
-// ** Full Name Getter
-const getFullName = params =>
-  toast(
-    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <Typography noWrap variant='body2' sx={{ color: 'text.primary', fontWeight: 600 }}>
-          {params.row.carName}
-        </Typography>
-      </Box>
-    </Box>
-  )
-
-function DetailPanelContent() {
-  const [ref] = useKeenSlider({
-    loop: true,
-    rtl: 'rtl'
-  })
-
-  return (
-    <KeenSliderWrapper>
-      <Grid container className='match-height'>
-        <Grid item xs={12} sm={6}>
-          More Detail
-        </Grid>
-
-        <Grid item xs={12} sm={6}>
-          No Exist
-        </Grid>
-      </Grid>
-    </KeenSliderWrapper>
-  )
-}
-
 const TableMostPopularOwners = () => {
   // ** States
   const [pageSize, setPageSize] = useState(7)
   const [hideNameColumn, setHideNameColumn] = useState(false)
+  const [dataFromAPI, setDataFromAPI] = useState([])
 
-  const getDetailPanelContent = React.useCallback(({ row }) => <DetailPanelContent row={row} />, [])
+  useEffect(() => {
+    if (dataFromAPI.length != 0) return
+    getDataFromAPI()
+  })
 
-  const getDetailPanelHeight = React.useCallback(() => 'auto', [])
+  const getDataFromAPI = async () => {
+    var myHeaders = new Headers()
+    myHeaders.append('Content-Type', 'application/x-www-form-urlencoded')
+
+    var urlencoded = new URLSearchParams()
+    urlencoded.append('ascout_keyValue', 'zD3BVPtyimdhrNBX5')
+    urlencoded.append('regionId', '1')
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: urlencoded,
+      redirect: 'follow'
+    }
+
+    fetch('http://161.35.118.186/mkulima/dereva/safari', requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        setDataFromAPI(result.data)
+      })
+      .catch(error => console.log('error', error))
+  }
 
   const columns = [
     {
@@ -179,15 +146,14 @@ const TableMostPopularOwners = () => {
 
   return (
     <Card>
-      <DataGridPro
+      <DataGrid
         autoHeight
-        rows={rows}
+        rows={dataFromAPI}
+        getRowId={row => row.driverId}
         columns={columns}
         rowThreshold={0}
-        getDetailPanelContent={getDetailPanelContent}
-        getDetailPanelHeight={getDetailPanelHeight} // Optional, default is 500px.
         pageSize={pageSize}
-        hideFooter
+        pagination
       />
     </Card>
   )
